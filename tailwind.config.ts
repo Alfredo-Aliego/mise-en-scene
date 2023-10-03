@@ -17,7 +17,6 @@ const config: Config = {
         "10vh": "10vh",
         "20vh": "20vh",
       },
-
       margin: {
         "10vh": "10vh",
       },
