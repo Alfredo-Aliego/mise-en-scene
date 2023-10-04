@@ -45,3 +45,33 @@ export const getStillById = async (id) => {
     throw error;
   }
 };
+
+// query directors
+export const queryDirectors = async (query) => {
+  try {
+    const res = await api.get(`/directors/${query}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// query genres
+export const queryGenres = async (query) => {
+  try {
+    const res = await api.get(`/genres/${query}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// query countries
+export const queryCountries = async (query) => {
+  try {
+    const res = await api.get(`/countries/${query}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
