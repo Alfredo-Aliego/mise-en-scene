@@ -1,4 +1,4 @@
-import { api } from "./apiConfig";
+import api from "./apiConfig";
 
 // get all movies
 export const getMovies = async () => {
@@ -23,10 +23,16 @@ export const getMovieById = async (id) => {
 // get all stills
 export const getStills = async () => {
   try {
-    const res = await api.get("/stills");
+    const res = await api.get("/stills/");
     return res.data;
   } catch (error) {
-    throw error;
+    console.log("Error: fetching stills.", error);
+
+    if (error.response && error.response.data && error.response.data.error) {
+      throw new Error(error.response.data.error);
+    } else {
+      throw error;
+    }
   }
 };
 
