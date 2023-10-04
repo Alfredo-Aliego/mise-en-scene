@@ -22,15 +22,19 @@ const MoviesPage = () => {
 
   return (
     <main className="m-4 pt-4">
-      {movies.map((movie) => (
-        <Link
-          key={movie.imdb_id}
-          href={`/${movie.title}`}
-          className="block w-max"
-        >
-          {movie.title}
-        </Link>
-      ))}
+      {movies.length > 0 ? (
+        movies.map((movie) => (
+          <Link
+            key={movie.imdb_id}
+            href={`/${movie.title}`}
+            className="block w-max"
+          >
+            {movie.title}
+          </Link>
+        ))
+      ) : (
+        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+      )}
     </main>
   );
 };
