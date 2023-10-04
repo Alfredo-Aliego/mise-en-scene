@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Search from "./Search";
 import Background from "./Background";
-import { FC } from "react";
+import { FC, useState } from "react";
 
 type NavProps = {
   searchBar: boolean;
@@ -17,8 +17,14 @@ const Nav: FC<NavProps> = ({
   backgroundMode,
   setBackgroundMode,
 }) => {
+  const [canClick, setCanClick] = useState(true);
+
   const handleSearch = () => setSearchBar(!searchBar);
-  const handleBackground = () => setBackgroundMode(!backgroundMode);
+
+  const handleBackground = () => {
+    setBackgroundMode(!backgroundMode);
+    setCanClick(!canClick);
+  };
 
   return (
     <>
@@ -36,7 +42,7 @@ const Nav: FC<NavProps> = ({
             <Link href="/year">Year</Link>
           </nav>
 
-          <Background handleBackground={handleBackground} />
+          <Background handleBackground={handleBackground} canClick={canClick} />
         </section>
       </main>
 
