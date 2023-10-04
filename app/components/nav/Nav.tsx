@@ -3,6 +3,7 @@ import Link from "next/link";
 import Search from "./Search";
 import Background from "./Background";
 import { FC, useState } from "react";
+import { queryCountries, queryDirectors, queryGenres } from "@/api/api";
 
 type NavProps = {
   searchBar: boolean;
@@ -18,6 +19,22 @@ const Nav: FC<NavProps> = ({
   setBackgroundMode,
 }) => {
   const [canClick, setCanClick] = useState(true);
+
+  // *** added by nat ***
+  const [inputValue, setInputValue] = useState("");
+  const [resultsDirector, setResultsDirector] = useState([]);
+  const [resultsCountry, setResultsCountry] = useState([]);
+  const [resultsGenre, setResultsGenre] = useState([]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // update text displayed as user enters input
+    const { value } = e.target;
+    setInputValue(value);
+
+    // queries
+
+  }
+  // ***
 
   const handleSearch = () => setSearchBar(!searchBar);
 
@@ -56,8 +73,7 @@ const Nav: FC<NavProps> = ({
         <input
           className={`w-screen px-4 transition-opacity outline-none ${
             searchBar ? "delay-500 opacity-100" : "opacity-0 invisible"
-          }`}
-        ></input>
+          }`} type="text" value={inputValue} onChange={handleInputChange} />
       </aside>
     </>
   );
