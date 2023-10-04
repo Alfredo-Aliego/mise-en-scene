@@ -10,7 +10,7 @@ export default function HomePage() {
   async function fetchImages() {
     const stills = await getStills();
     setStills(stills);
-    console.log(stills);
+    // console.log(stills);
   }
 
   return <main>HomePage</main>;
