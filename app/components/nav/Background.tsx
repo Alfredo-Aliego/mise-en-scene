@@ -2,15 +2,18 @@ import React, { FC } from "react";
 
 type BackgroundProps = {
   handleBackground: () => void;
+  canClick: boolean;
 };
 
-const Background: FC<BackgroundProps> = ({ handleBackground }) => {
+const Background: FC<BackgroundProps> = ({ handleBackground, canClick }) => {
   return (
-    <label className="swap swap-rotate absolute right-4">
+    <label className="swap swap-rotate absolute bottom-4 right-4">
       <input type="checkbox" />
 
       <svg
-        className="swap-on fill-current w-10 h-10"
+        className={`fill-current w-10 h-10 ${
+          canClick ? "invisible" : "swap on"
+        }`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         onClick={handleBackground}
@@ -19,7 +22,9 @@ const Background: FC<BackgroundProps> = ({ handleBackground }) => {
       </svg>
 
       <svg
-        className="swap-off fill-current w-10 h-10"
+        className={`fill-current w-10 h-10 ${
+          canClick ? "swap off" : "invisible"
+        }`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         onClick={handleBackground}
