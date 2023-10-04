@@ -7,11 +7,11 @@ type Movie = {
   date_released: string;
 };
 
-type UniqueYears = number[];
+type UniqueYear = number[];
 
 const YearPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [uniqueYears, setUniqueYears] = useState<UniqueYears>([]);
+  const [uniqueYears, setUniqueYears] = useState<UniqueYear>([]);
   const allYears: number[] = [];
 
   useEffect(() => {
