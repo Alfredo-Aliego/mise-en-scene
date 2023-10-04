@@ -1,15 +1,24 @@
 "use client";
 import Link from "next/link";
 import Search from "./Search";
+import Background from "./Background";
 import { FC } from "react";
 
 type NavProps = {
   searchBar: boolean;
   setSearchBar: (searchBar: boolean) => void;
+  backgroundMode: boolean;
+  setBackgroundMode: (backgroundMode: boolean) => void;
 };
 
-const Nav: FC<NavProps> = ({ searchBar, setSearchBar }) => {
+const Nav: FC<NavProps> = ({
+  searchBar,
+  setSearchBar,
+  backgroundMode,
+  setBackgroundMode,
+}) => {
   const handleSearch = () => setSearchBar(!searchBar);
+  const handleBackground = () => setBackgroundMode(!backgroundMode);
 
   return (
     <>
@@ -17,6 +26,8 @@ const Nav: FC<NavProps> = ({ searchBar, setSearchBar }) => {
         <header>Mise-En-Scène</header>
 
         <section className="flex w-screen justify-center z-10">
+          <Search handleSearch={handleSearch} />
+
           <nav className="flex gap-5">
             <Link href="/">Home</Link>
             <Link href="/movies">Movies</Link>
@@ -25,7 +36,7 @@ const Nav: FC<NavProps> = ({ searchBar, setSearchBar }) => {
             <Link href="/year">Year</Link>
           </nav>
 
-          <Search handleSearch={handleSearch} />
+          <Background handleBackground={handleBackground} />
         </section>
       </main>
 

@@ -7,7 +7,7 @@ type SearchProps = {
 const Search: FC<SearchProps> = ({ handleSearch }) => {
   return (
     <>
-      <aside className="absolute right-4 cursor-pointer" onClick={handleSearch}>
+      <aside className="absolute left-4 cursor-pointer" onClick={handleSearch}>
         Search
       </aside>
     </>
