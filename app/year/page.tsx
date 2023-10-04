@@ -38,13 +38,15 @@ const YearPage = () => {
 
   return (
     <main className="m-4 pt-4">
-      {uniqueYears.length > 0
-        ? uniqueYears.map((year, index) => (
-            <Link key={index} href={`/${year}`} className="block w-max">
-              {year}
-            </Link>
-          ))
-        : null}
+      {uniqueYears.length > 0 ? (
+        uniqueYears.map((year, index) => (
+          <Link key={index} href={`/${year}`} className="block w-max">
+            {year}
+          </Link>
+        ))
+      ) : (
+        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+      )}
     </main>
   );
 };

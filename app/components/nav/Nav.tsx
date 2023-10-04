@@ -27,17 +27,17 @@ const Nav: FC<NavProps> = ({
   const [resultsGenre, setResultsGenre] = useState([]);
 
   useEffect(() => {
-    if (resultsCountry.length) console.log(resultsCountry[0])
-    else console.log("no countries")
+    if (resultsCountry.length) console.log(resultsCountry[0]);
+    else console.log("no countries");
 
-    if (resultsDirector.length) console.log(resultsDirector[0])
-    else console.log("no directors")
+    if (resultsDirector.length) console.log(resultsDirector[0]);
+    else console.log("no directors");
 
-    if (resultsGenre.length) console.log(resultsGenre[0])
-    else console.log("no genres")
+    if (resultsGenre.length) console.log(resultsGenre[0]);
+    else console.log("no genres");
 
-    console.log("--------------------------------")
-  }, [resultsCountry, resultsDirector, resultsGenre])
+    console.log("--------------------------------");
+  }, [resultsCountry, resultsDirector, resultsGenre]);
 
   // async function to make api calls
   const getQueryResults = async (query: string) => {
@@ -49,7 +49,7 @@ const Nav: FC<NavProps> = ({
 
     const countries = await queryCountries(query);
     setResultsCountry(countries);
-  }
+  };
 
   // search bar input handler
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +59,7 @@ const Nav: FC<NavProps> = ({
 
     // queries
     getQueryResults(value);
-  }
+  };
   // *** *** ***
 
   const handleSearch = () => setSearchBar(!searchBar);
@@ -83,6 +83,7 @@ const Nav: FC<NavProps> = ({
             <Link href="/director">Director</Link>
             <Link href="/genre">Genre</Link>
             <Link href="/year">Year</Link>
+            <Link href="/country">Country</Link>
           </nav>
 
           <Background handleBackground={handleBackground} canClick={canClick} />
@@ -99,7 +100,11 @@ const Nav: FC<NavProps> = ({
         <input
           className={`w-screen px-4 transition-opacity outline-none ${
             searchBar ? "delay-500 opacity-100" : "opacity-0 invisible"
-          }`} type="text" value={inputValue} onChange={handleInputChange} />
+          }`}
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
       </aside>
     </>
   );

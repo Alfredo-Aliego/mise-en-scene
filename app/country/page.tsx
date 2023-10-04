@@ -1,6 +1,6 @@
 import React from "react";
 
-const DirectorPage = () => {
+const CountryPage = () => {
   return (
     // Replace with logic relevant to this component
     // <main className="m-4 pt-4">
@@ -21,4 +21,4 @@ const DirectorPage = () => {
   );
 };
 
-export default DirectorPage;
+export default CountryPage;
