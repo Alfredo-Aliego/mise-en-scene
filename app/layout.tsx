@@ -19,10 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [searchBar, setSearchBar] = useState(false);
+  const [backgroundMode, setBackgroundMode] = useState(false);
+
   return (
-    <html lang="en">
+    <html data-theme={`${backgroundMode ? "dracula" : "wireframe"}`} lang="en">
       <body className={inter.className}>
-        <Nav searchBar={searchBar} setSearchBar={setSearchBar} />
+        <Nav
+          searchBar={searchBar}
+          setSearchBar={setSearchBar}
+          backgroundMode={backgroundMode}
+          setBackgroundMode={setBackgroundMode}
+        />
         <div
           className={`mt-10vh transition-transform duration-500 ${
             searchBar
