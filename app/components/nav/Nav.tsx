@@ -63,6 +63,10 @@ const Nav: FC<NavProps> = ({
     getQueryResults(value);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  }
+
   const handleSearch = () => setSearchBar(!searchBar);
 
   const handleBackground = () => {
@@ -98,14 +102,16 @@ const Nav: FC<NavProps> = ({
             : "transform translate-y-[-10vh]"
         }`}
       >
-        <input
-          className={`w-screen px-4 transition-opacity outline-none ${
-            searchBar ? "delay-500 opacity-100" : "opacity-0 invisible"
-          }`}
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            className={`w-screen px-4 transition-opacity outline-none ${
+              searchBar ? "delay-500 opacity-100" : "opacity-0 invisible"
+            }`}
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            />
+          </form>
       </aside>
     </>
   );
