@@ -5,12 +5,25 @@ import Background from "./Background";
 import { FC, useState, useEffect } from "react";
 import { queryCountries, queryDirectors, queryGenres } from "@/api/api";
 
+type Still = {
+  id: number;
+  image_url: string;
+  imdb_id: string;
+};
+
+type Movies = {
+  stills: Still[];
+  imdb_id: string;
+  title: string;
+};
+
 type NavProps = {
   searchBar: boolean;
   setSearchBar: (searchBar: boolean) => void;
   backgroundMode: boolean;
   setBackgroundMode: (backgroundMode: boolean) => void;
 };
+
 
 const Nav: FC<NavProps> = ({
   searchBar,
@@ -19,24 +32,13 @@ const Nav: FC<NavProps> = ({
   setBackgroundMode,
 }) => {
   const [canClick, setCanClick] = useState(true);
-
-  // *** added by nat ***
   const [inputValue, setInputValue] = useState("");
-  const [resultsDirector, setResultsDirector] = useState([]);
-  const [resultsCountry, setResultsCountry] = useState([]);
-  const [resultsGenre, setResultsGenre] = useState([]);
+  const [resultsDirector, setResultsDirector] = useState<Movies []>([]);
+  const [resultsCountry, setResultsCountry] = useState<Movies []>([]);
+  const [resultsGenre, setResultsGenre] = useState<Movies []>([]);
 
   useEffect(() => {
-    if (resultsCountry.length) console.log(resultsCountry[0]);
-    else console.log("no countries");
-
-    if (resultsDirector.length) console.log(resultsDirector[0]);
-    else console.log("no directors");
-
-    if (resultsGenre.length) console.log(resultsGenre[0]);
-    else console.log("no genres");
-
-    console.log("--------------------------------");
+    
   }, [resultsCountry, resultsDirector, resultsGenre]);
 
   // async function to make api calls
@@ -60,7 +62,6 @@ const Nav: FC<NavProps> = ({
     // queries
     getQueryResults(value);
   };
-  // *** *** ***
 
   const handleSearch = () => setSearchBar(!searchBar);
 
