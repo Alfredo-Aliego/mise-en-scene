@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getMovieById } from "@/api/api";
 import Link from "next/link";
+import FancyBox from "../../../hook/Fancy.jsx";
 type Movie = {
   imdb_id: string;
   title: string;
@@ -93,18 +94,33 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
           </div>
         </p>
       </div>
-
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        {movie.stills.map((still) => (
-          <div key={still.id} className="w-full">
-            <img
-              className="rounded shadow-lg"
-              src={still.image_url}
-              alt={`Still from ${movie.title}`}
-            />
-          </div>
-        ))}
-      </div>
+      <FancyBox
+        options={{
+          Carousel: {
+            infinite: false,
+          },
+          Toolbar: {
+            display: {
+              left: ["infobar"],
+              middle: ["zoomIn", "zoomOut"],
+              right: ["slideshow", "thumbs", "close"],
+            },
+          },
+        }}
+      >
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {movie.stills.map((still) => (
+            <div key={still.id} className="w-full">
+              <img
+                className="rounded shadow-lg cursor-pointer"
+                src={still.image_url}
+                alt={`Still from ${movie.title}`}
+                data-fancybox="gallery"
+              />
+            </div>
+          ))}
+        </div>
+      </FancyBox>
     </div>
   );
 }
