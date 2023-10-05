@@ -1,23 +1,58 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
+import { getDirectorsOnly } from "@/api/api";
+import Link from "next/link";
+
+type Director = {
+  director: string;
+};
+
+type UniqueDirector = string[];
 
 const DirectorPage = () => {
+  const [directors, setDirectors] = useState<Director[]>([]);
+  const [uniqueDirectors, setUniqueDirectors] = useState<UniqueDirector>([]);
+  const allDirectors: string[] = [];
+
+  useEffect(() => {
+    fetchDirectors();
+  }, []);
+
+  useEffect(() => {
+    getUniqueDirectors();
+  }, [directors]);
+
+  useEffect(() => {}, [uniqueDirectors]);
+
+  const fetchDirectors = async () => {
+    let fetchedDirectors = await getDirectorsOnly();
+    setDirectors(fetchedDirectors);
+  };
+
+  const getUniqueDirectors = () => {
+    directors.forEach((director) => {
+      const splitDirectors = director.director.split(", ");
+      allDirectors.push(...splitDirectors);
+    });
+    setUniqueDirectors(Array.from(new Set(allDirectors.sort())));
+  };
+
   return (
-    // Replace with logic relevant to this component
-    // <main className="m-4 pt-4">
-    //   {movies.length > 0 ? (
-    //     movies.map((movie) => (
-    //       <Link
-    //         key={movie.imdb_id}
-    //         href={`/${movie.title}`}
-    //         className="block w-max"
-    //       >
-    //         {movie.title}
-    //       </Link>
-    //     ))
-    //   ) : (
-    <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
-    // )}
-    // </main>
+    <main className="m-4 pt-4">
+      {uniqueDirectors.length > 0 ? (
+        uniqueDirectors.map((director, index) => (
+          <Link
+            key={index}
+            href={`/director/${director}`}
+            className="block w-max"
+          >
+            {director}
+          </Link>
+        ))
+      ) : (
+        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+      )}
+    </main>
   );
 };
 
