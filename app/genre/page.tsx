@@ -1,38 +1,38 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getMovies } from "@/api/api";
+import { getGenresOnly } from "@/api/api";
 import Link from "next/link";
 
-type Movie = {
+type Genre = {
   genre: string;
 };
 
 type UniqueGenre = string[];
 
 const GenrePage = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [genres, setGenres] = useState<Genre[]>([]);
   const [uniqueGenres, setUniqueGenres] = useState<UniqueGenre>([]);
   const allGenres: string[] = [];
 
   useEffect(() => {
-    fetchMovies();
+    fetchGenres();
   }, []);
 
   useEffect(() => {
-    getGenres();
-  }, [movies]);
+    getUniqueGenres();
+  }, [genres]);
 
   useEffect(() => {}, [uniqueGenres]);
 
-  const fetchMovies = async () => {
-    let fetchedMovies: Movie[] = await getMovies();
-    setMovies(fetchedMovies);
+  const fetchGenres = async () => {
+    let fetchedGenres = await getGenresOnly();
+    setGenres(fetchedGenres);
   };
 
-  const getGenres = () => {
-    movies.forEach((movie) => {
-      const movieGenres = movie.genre.split(", ");
-      allGenres.push(...movieGenres);
+  const getUniqueGenres = () => {
+    genres.forEach((genre) => {
+      const splitGenres = genre.genre.split(", ");
+      allGenres.push(...splitGenres);
     });
     setUniqueGenres(Array.from(new Set(allGenres)));
   };

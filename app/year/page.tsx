@@ -1,39 +1,37 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getMovies } from "@/api/api";
+import { getYearsOnly } from "@/api/api";
 import Link from "next/link";
 
-type Movie = {
-  date_released: string;
+type Year = {
+  year: string;
 };
 
 type UniqueYear = number[];
 
 const YearPage = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [years, setYears] = useState<Year[]>([]);
   const [uniqueYears, setUniqueYears] = useState<UniqueYear>([]);
   const allYears: number[] = [];
 
   useEffect(() => {
-    fetchMovies();
+    fetchYears();
   }, []);
 
   useEffect(() => {
     getYears();
-  }, [movies]);
+  }, [years]);
 
   useEffect(() => {}, [uniqueYears]);
 
-  const fetchMovies = async () => {
-    let fetchedMovies: Movie[] = await getMovies();
-    setMovies(fetchedMovies);
+  const fetchYears = async () => {
+    let fetchedYears: Year[] = await getYearsOnly();
+    setYears(fetchedYears);
   };
 
   const getYears = () => {
-    movies.forEach((movie) =>
-      allYears.push(parseInt(movie.date_released.slice(0, 4)))
-    );
-    setUniqueYears(Array.from(new Set(allYears)).sort((a, b) => a - b));
+    years.forEach((year) => allYears.push(parseInt(year.year)));
+    setUniqueYears(allYears.sort((a, b) => a - b));
   };
 
   return (

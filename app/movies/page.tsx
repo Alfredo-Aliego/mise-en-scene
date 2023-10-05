@@ -1,35 +1,30 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getMovies } from "../../api/api";
+import { getTitlesOnly } from "../../api/api";
 import Link from "next/link";
 
-type Movie = {
-  imdb_id: string;
+type Title = {
   title: string;
 };
 
 const MoviesPage = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [titles, setTitles] = useState<Title[]>([]);
 
   useEffect(() => {
-    fetchMovies();
+    fetchTitles();
   }, []);
 
-  const fetchMovies = async () => {
-    let fetchedMovies: Movie[] = await getMovies();
-    setMovies(fetchedMovies);
+  const fetchTitles = async () => {
+    let fetchedTitles: Title[] = await getTitlesOnly();
+    setTitles(fetchedTitles);
   };
 
   return (
     <main className="m-4 pt-4">
-      {movies.length > 0 ? (
-        movies.map((movie) => (
-          <Link
-            key={movie.imdb_id}
-            href={`/${movie.title}`}
-            className="block w-max"
-          >
-            {movie.title}
+      {titles.length > 0 ? (
+        titles.map((title, index) => (
+          <Link key={index} href={`/${title.title}`} className="block w-max">
+            {title.title}
           </Link>
         ))
       ) : (
