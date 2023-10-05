@@ -15,7 +15,7 @@ const MoviesPage = () => {
   }, []);
 
   const fetchTitles = async () => {
-    let fetchedTitles: Title[] = await getTitlesOnly();
+    const fetchedTitles: Title[] = await getTitlesOnly();
     setTitles(fetchedTitles);
   };
 

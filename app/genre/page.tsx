@@ -25,7 +25,7 @@ const GenrePage = () => {
   useEffect(() => {}, [uniqueGenres]);
 
   const fetchGenres = async () => {
-    let fetchedGenres = await getGenresOnly();
+    const fetchedGenres = await getGenresOnly();
     setGenres(fetchedGenres);
   };
 
@@ -34,7 +34,7 @@ const GenrePage = () => {
       const splitGenres = genre.genre.split(", ");
       allGenres.push(...splitGenres);
     });
-    setUniqueGenres(Array.from(new Set(allGenres)));
+    setUniqueGenres(Array.from(new Set(allGenres.sort())));
   };
 
   return (
