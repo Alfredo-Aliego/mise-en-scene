@@ -48,18 +48,21 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
         alt={movie.title}
         className=" w-full"
       />
-      <p className="mb-2">
-        <span className="font-semibold">Director:</span> {movie.director}
-      </p>
-      <p className="mb-2">
-        <span className="font-semibold">Genre:</span> {movie.genre}
-      </p>
-      <p className="mb-2">
-        <span className="font-semibold">Rating:</span> {movie.rating}
-      </p>
-      <p className="mb-4">
-        <span className="font-semibold">IMDb Rating:</span> {movie.imdb_rating}
-      </p>
+      <div className="flex justify-between">
+        <p className="mb-2">
+          <span className="font-semibold">Director:</span> {movie.director}
+        </p>
+        <p className="mb-2">
+          <span className="font-semibold">Genre:</span> {movie.genre}
+        </p>
+        <p className="mb-2">
+          <span className="font-semibold">Rating:</span> {movie.rating}
+        </p>
+        <p className="mb-4">
+          <span className="font-semibold">IMDb Rating:</span>{" "}
+          {movie.imdb_rating}
+        </p>
+      </div>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {movie.stills.map((still) => (
