@@ -3,7 +3,8 @@ import Link from "next/link";
 import Search from "./Search";
 import Background from "./Background";
 import { FC, useState, useEffect } from "react";
-import { queryCountries, queryDirectors, queryGenres } from "@/api/api";
+import { useRouter } from "next/navigation";
+// import { queryCountries, queryDirectors, queryGenres } from "@/api/api";
 
 type Still = {
   id: number;
@@ -33,25 +34,26 @@ const Nav: FC<NavProps> = ({
 }) => {
   const [canClick, setCanClick] = useState(true);
   const [inputValue, setInputValue] = useState("");
-  const [resultsDirector, setResultsDirector] = useState<Movies []>([]);
-  const [resultsCountry, setResultsCountry] = useState<Movies []>([]);
-  const [resultsGenre, setResultsGenre] = useState<Movies []>([]);
+  const router = useRouter();
+  // const [resultsDirector, setResultsDirector] = useState<Movies []>([]);
+  // const [resultsCountry, setResultsCountry] = useState<Movies []>([]);
+  // const [resultsGenre, setResultsGenre] = useState<Movies []>([]);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-  }, [resultsCountry, resultsDirector, resultsGenre]);
+  // }, [resultsCountry, resultsDirector, resultsGenre]);
 
   // async function to make api calls
-  const getQueryResults = async (query: string) => {
-    const directors = await queryDirectors(query);
-    setResultsDirector(directors);
+  // const getQueryResults = async (query: string) => {
+  //   const directors = await queryDirectors(query);
+  //   setResultsDirector(directors);
 
-    const genres = await queryGenres(query);
-    setResultsGenre(genres);
+  //   const genres = await queryGenres(query);
+  //   setResultsGenre(genres);
 
-    const countries = await queryCountries(query);
-    setResultsCountry(countries);
-  };
+  //   const countries = await queryCountries(query);
+  //   setResultsCountry(countries);
+  // };
 
   // search bar input handler
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,11 +62,15 @@ const Nav: FC<NavProps> = ({
     setInputValue(value);
 
     // queries
-    getQueryResults(value);
+    // getQueryResults(value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const value = inputValue;
+    setInputValue("");
+    router.push(`/results?query=${value}`);
   }
 
   const handleSearch = () => setSearchBar(!searchBar);
