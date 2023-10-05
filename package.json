@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.24",
     "axios": "^1.5.1",
     "next": "latest",
     "react": "latest",
