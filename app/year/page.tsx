@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getYearsOnly } from "@/api/api";
 import Link from "next/link";
+import LoadingBars from "../components/loading/LoadingBars";
 
 type Year = {
   year: string;
@@ -42,14 +43,14 @@ const YearPage = () => {
         uniqueYears.map((year, index) => (
           <article
             key={index}
-            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl"
+            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl shadow-lg shadow-current"
             onClick={() => router.push(`/year/${year}`)}
           >
             {year}
           </article>
         ))
       ) : (
-        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+        <LoadingBars />
       )}
     </main>
   );

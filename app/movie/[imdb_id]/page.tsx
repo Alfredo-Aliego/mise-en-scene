@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { getMovieById } from "@/api/api";
 import Link from "next/link";
 import FancyBox from "../../../hook/Fancy.jsx";
+import LoadingBars from "../../components/loading/LoadingBars";
+
 type Movie = {
   imdb_id: string;
   title: string;
@@ -34,10 +36,7 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
     console.log(fetchedMovie);
   };
 
-  if (!movie)
-    return (
-      <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
-    );
+  if (!movie) return <LoadingBars />;
 
   let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
 

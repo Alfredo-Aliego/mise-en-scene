@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { getDirectorsOnly } from "@/api/api";
 import Link from "next/link";
+import LoadingBars from "../components/loading/LoadingBars";
 
 type Director = {
   director: string;
@@ -50,7 +51,7 @@ const DirectorPage = () => {
           </Link>
         ))
       ) : (
-        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+        <LoadingBars />
       )}
     </main>
   );

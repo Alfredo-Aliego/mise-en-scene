@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { getGenresOnly } from "@/api/api";
 import Link from "next/link";
+import LoadingBars from "../components/loading/LoadingBars";
 
 type Genre = {
   genre: string;
@@ -46,7 +47,7 @@ const GenrePage = () => {
           </Link>
         ))
       ) : (
-        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+        <LoadingBars />
       )}
     </main>
   );

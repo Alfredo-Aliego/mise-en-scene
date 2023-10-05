@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { getTitlesOnly } from "../../api/api";
 import Link from "next/link";
+import LoadingBars from "../components/loading/LoadingBars";
 
 type Title = {
   title: string;
@@ -44,7 +45,7 @@ const MoviesPage = () => {
           </Link>
         ))
       ) : (
-        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+        <LoadingBars />
       )}
     </main>
   );

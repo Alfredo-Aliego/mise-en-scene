@@ -9,6 +9,7 @@ import { useState, Fragment, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
+import LoadingBars from "../components/loading/LoadingBars";
 
 type Movies = {
   stills: Still[];
@@ -96,7 +97,7 @@ export default function SearchResults() {
             </Fragment>
           ))
         ) : (
-          <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+          <LoadingBars />
         )}
       </Masonry>
     </main>

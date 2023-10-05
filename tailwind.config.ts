@@ -7,7 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   daisyui: {
-    themes: ["wireframe", "dracula"],
+    themes: [
+      "luxury",
+      {
+        customLight: {
+          primary: "#efefef", // light gray
+          secondary: "#3eb370", // This color needs to be adjusted
+          "base-100": "#ffffff",
+        },
+      },
+    ],
   },
   theme: {
     extend: {
