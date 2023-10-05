@@ -40,6 +40,10 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
 
   let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
 
+  let radioIndex = Math.round(rating * 2) - 1;
+
+  const totalStars = 10;
+
   console.log(rating);
 
   return (
@@ -63,60 +67,23 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
           <span className="font-semibold">Rating:</span> {movie.rating}
         </p>
         <p className="mb-4">
-          <span className="font-semibold">IMDb Rating:</span>{" "}
-          <div className="rating rating rating-half">
-            <input type="radio" name="rating-10" className="rating-hidden" />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-1"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-2"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-1"
-              checked
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-2"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-1"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-2"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-1"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-2"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-1"
-            />
-            <input
-              type="radio"
-              name="rating-10"
-              className="bg-green-500 mask mask-star-2 mask-half-2"
-            />
+          <span className="font-semibold">IMDb Rating:</span>
+          <div
+            className="rating rating-lg rating-half lg:tooltip"
+            data-tip={rating.toFixed(1)}
+          >
+            {Array.from({ length: totalStars }).map((_, index) => {
+              return (
+                <input
+                  type="radio"
+                  name="rating-10"
+                  className={`bg-green-500 mask mask-star-2 ${
+                    index % 2 === 0 ? "mask-half-1" : "mask-half-2"
+                  }`}
+                  checked={index === radioIndex}
+                />
+              );
+            })}
           </div>
         </p>
       </div>
