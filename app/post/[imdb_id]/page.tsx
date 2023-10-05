@@ -56,22 +56,22 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
         alt={movie.title}
         className=" w-full"
       />
-      <div className="flex justify-between mt-2">
-        <p className="mb-2">
+      <div className="flex items-center justify-between mt-2">
+        <p className="">
           <span className="font-semibold">Director:</span> {movie.director}
         </p>
-        <p className="mb-2">
+        <p className="">
           <span className="font-semibold">Genre:</span> {movie.genre}
         </p>
-        <p className="mb-2">
+        <p className="">
           <span className="font-semibold">Rating:</span> {movie.rating}
         </p>
-        <p className="mb-4">
+        <p className="">
           <a
             target="_blank"
             href={`https://www.imdb.com/title/${movie.imdb_id}`}
           >
-            <span className="font-semibold">IMDb Rating:</span>
+            <span className="font-semibold hover:underline">IMDb Rating:</span>
           </a>
 
           <div
@@ -83,7 +83,7 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
                 <input
                   type="radio"
                   name="rating-10"
-                  className={`bg-green-500 mask mask-star-2 ${
+                  className={`bg-yellow-500 mask mask-star-2 ${
                     index % 2 === 0 ? "mask-half-1" : "mask-half-2"
                   }`}
                   checked={index === radioIndex}
