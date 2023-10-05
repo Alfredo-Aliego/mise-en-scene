@@ -46,7 +46,6 @@ export default function SearchResults() {
       else return acc;
     }, []);
 
-    // console.log(uniqueMovies);
     setMovies(uniqueMovies);
   };
 
@@ -63,13 +62,12 @@ export default function SearchResults() {
     setResultsCountry(countries);
 
     const titles = await queryTitles(query);
-    // console.log(titles);
     setResultsTitle(titles);
   };
 
   useEffect(() => {
     getQueryResults(query);
-  }, []);
+  }, [query]);
 
   useEffect(() => {
     getUniqueResults();
