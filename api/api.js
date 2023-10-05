@@ -145,3 +145,13 @@ export const getYearsOnly = async () => {
     throw error;
   }
 };
+
+// imdb ids only list
+export const getImdbIdOnly = async () => {
+  try {
+    const res = await api.get("/only/imdb");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
