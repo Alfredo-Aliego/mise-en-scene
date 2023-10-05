@@ -60,32 +60,58 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
         </p>
         <p className="mb-4">
           <span className="font-semibold">IMDb Rating:</span>{" "}
-          <div className="rating">
+          <div className="rating rating rating-half">
+            <input type="radio" name="rating-10" className="rating-hidden" />
             <input
               type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-1"
             />
             <input
               type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-2"
+            />
+            <input
+              type="radio"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-1"
               checked
             />
             <input
               type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-2"
             />
             <input
               type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-1"
             />
             <input
               type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-2"
+            />
+            <input
+              type="radio"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-1"
+            />
+            <input
+              type="radio"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-2"
+            />
+            <input
+              type="radio"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-1"
+            />
+            <input
+              type="radio"
+              name="rating-10"
+              className="bg-green-500 mask mask-star-2 mask-half-2"
             />
           </div>
         </p>
