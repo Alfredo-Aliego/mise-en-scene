@@ -75,3 +75,73 @@ export const queryCountries = async (query) => {
     throw error;
   }
 };
+
+// query titles
+export const queryTitles = async (query) => {
+  try {
+    const res = await api.get(`/titles/${query}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// query years (needs exact match)
+export const queryYears = async (year) => {
+  try {
+    const res = await api.get(`/years/${year}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// directors only list
+export const getDirectorsOnly = async () => {
+  try {
+    const res = await api.get("/only/directors");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// titles only list
+export const getTitlesOnly = async () => {
+  try {
+    const res = await api.get("/only/titles");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// genres only list
+export const getGenresOnly = async () => {
+  try {
+    const res = await api.get("/only/genres");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// countries only list
+export const getCountriesOnly = async () => {
+  try {
+    const res = await api.get("/only/countries");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// years only list
+export const getYearsOnly = async () => {
+  try {
+    const res = await api.get("/only/years");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
