@@ -48,7 +48,7 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
         alt={movie.title}
         className=" w-full"
       />
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-2">
         <p className="mb-2">
           <span className="font-semibold">Director:</span> {movie.director}
         </p>
@@ -60,7 +60,34 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
         </p>
         <p className="mb-4">
           <span className="font-semibold">IMDb Rating:</span>{" "}
-          {movie.imdb_rating}
+          <div className="rating">
+            <input
+              type="radio"
+              name="rating-2"
+              className="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              className="mask mask-star-2 bg-orange-400"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              className="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              className="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              className="mask mask-star-2 bg-orange-400"
+            />
+          </div>
         </p>
       </div>
 
