@@ -67,9 +67,12 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
           <span className="font-semibold">Rating:</span> {movie.rating}
         </p>
         <p className="mb-4">
-          <Link href={`https://www.imdb.com/title/${movie.imdb_id}`}>
+          <a
+            target="_blank"
+            href={`https://www.imdb.com/title/${movie.imdb_id}`}
+          >
             <span className="font-semibold">IMDb Rating:</span>
-          </Link>
+          </a>
 
           <div
             className="rating rating-lg rating-half lg:tooltip"
