@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { getYearsOnly } from "@/api/api";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ type Year = {
 type UniqueYear = number[];
 
 const YearPage = () => {
+  const router = useRouter();
   const [years, setYears] = useState<Year[]>([]);
   const [uniqueYears, setUniqueYears] = useState<UniqueYear>([]);
   const allYears: number[] = [];
@@ -34,13 +36,20 @@ const YearPage = () => {
     setUniqueYears(allYears.sort((a, b) => a - b));
   };
 
+  const nav = () => router.push(`${year}`);
   return (
-    <main className="m-4 pt-4">
+    <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
       {uniqueYears.length > 0 ? (
         uniqueYears.map((year, index) => (
-          <Link key={index} href={`/${year}`} className="block w-max">
+          <article
+            key={index}
+            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl"
+            onClick={() => router.push(`/${year}`)}
+          >
+            {/* <Link key={index} href={`/year/${year}`}> */}
             {year}
-          </Link>
+            {/* </Link> */}
+          </article>
         ))
       ) : (
         <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>

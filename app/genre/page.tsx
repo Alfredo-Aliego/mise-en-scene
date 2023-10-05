@@ -41,7 +41,7 @@ const GenrePage = () => {
     <main className="m-4 pt-4">
       {uniqueGenres.length > 0 ? (
         uniqueGenres.map((genre, index) => (
-          <Link key={index} href={`/${genre}`} className="block w-max">
+          <Link key={index} href={`/genre/${genre}`} className="block w-max">
             {genre}
           </Link>
         ))

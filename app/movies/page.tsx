@@ -23,7 +23,11 @@ const MoviesPage = () => {
     <main className="m-4 pt-4">
       {titles.length > 0 ? (
         titles.map((title, index) => (
-          <Link key={index} href={`/${title.title}`} className="block w-max">
+          <Link
+            key={index}
+            href={`/movie/${title.title}`}
+            className="block w-max"
+          >
             {title.title}
           </Link>
         ))
