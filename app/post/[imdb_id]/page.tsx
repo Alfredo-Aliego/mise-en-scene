@@ -21,7 +21,7 @@ type Still = {
 };
 
 export default function Page({ params }: { params: { imdb_id: string } }) {
-  const [movie, setMovie] = useState<Movie>();
+  const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
     fetchMovie();
@@ -37,6 +37,10 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
     return (
       <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
     );
+
+  let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
+
+  console.log(rating);
 
   return (
     <div className="container mx-auto px-4 my-12">
