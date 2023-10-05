@@ -1,7 +1,11 @@
-"use client"
-import { queryCountries, queryDirectors, queryGenres } from "@/api/api";
+"use client";
+import {
+  queryCountries,
+  queryDirectors,
+  queryGenres,
+  queryTitles,
+} from "@/api/api";
 import { useState, Fragment, useEffect } from "react";
-// import { useParams } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
@@ -22,24 +26,29 @@ export default function SearchResults() {
   const [resultsDirector, setResultsDirector] = useState<Movies[]>([]);
   const [resultsCountry, setResultsCountry] = useState<Movies[]>([]);
   const [resultsGenre, setResultsGenre] = useState<Movies[]>([]);
-  // const params = useParams();
+  const [resultsTitle, setResultsTitle] = useState<Movies[]>([]);
+
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 
   const getUniqueResults = () => {
-    const combinedMovies = [...resultsCountry, ...resultsDirector, ...resultsGenre];
+    const combinedMovies = [
+      ...resultsCountry,
+      ...resultsDirector,
+      ...resultsGenre,
+      ...resultsTitle,
+    ];
 
     const uniqueMovies = combinedMovies.reduce((acc: Movies[], current) => {
-      const found = acc.find(movie => movie.imdb_id === current.imdb_id);
+      const found = acc.find((movie) => movie.imdb_id === current.imdb_id);
 
       if (!found) return acc.concat([current]);
       else return acc;
-    }, [])
+    }, []);
 
-    // console.log("here")
-    console.log(uniqueMovies)
+    // console.log(uniqueMovies);
     setMovies(uniqueMovies);
-  }
+  };
 
   const getQueryResults = async (query: string | null) => {
     if (query === null) return;
@@ -52,19 +61,19 @@ export default function SearchResults() {
 
     const countries = await queryCountries(query);
     setResultsCountry(countries);
+
+    const titles = await queryTitles(query);
+    // console.log(titles);
+    setResultsTitle(titles);
   };
 
   useEffect(() => {
-    // console.log(query)
     getQueryResults(query);
-    // getUniqueResults();
-  }, [])
+  }, []);
 
   useEffect(() => {
-    // const resultsAll = Array.from(new Set())
     getUniqueResults();
-  }, [resultsCountry, resultsDirector, resultsGenre]);
-  
+  }, [resultsCountry, resultsDirector, resultsGenre, resultsTitle]);
 
   return (
     <main className="mr-4 pt-4 ">

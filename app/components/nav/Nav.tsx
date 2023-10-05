@@ -4,7 +4,6 @@ import Search from "./Search";
 import Background from "./Background";
 import { FC, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-// import { queryCountries, queryDirectors, queryGenres } from "@/api/api";
 
 type Still = {
   id: number;
@@ -35,34 +34,12 @@ const Nav: FC<NavProps> = ({
   const [canClick, setCanClick] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
-  // const [resultsDirector, setResultsDirector] = useState<Movies []>([]);
-  // const [resultsCountry, setResultsCountry] = useState<Movies []>([]);
-  // const [resultsGenre, setResultsGenre] = useState<Movies []>([]);
-
-  // useEffect(() => {
-    
-  // }, [resultsCountry, resultsDirector, resultsGenre]);
-
-  // async function to make api calls
-  // const getQueryResults = async (query: string) => {
-  //   const directors = await queryDirectors(query);
-  //   setResultsDirector(directors);
-
-  //   const genres = await queryGenres(query);
-  //   setResultsGenre(genres);
-
-  //   const countries = await queryCountries(query);
-  //   setResultsCountry(countries);
-  // };
 
   // search bar input handler
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // update text displayed as user enters input
     const { value } = e.target;
     setInputValue(value);
-
-    // queries
-    // getQueryResults(value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
