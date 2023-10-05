@@ -36,7 +36,6 @@ const YearPage = () => {
     setUniqueYears(allYears.sort((a, b) => a - b));
   };
 
-  const nav = () => router.push(`${year}`);
   return (
     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
       {uniqueYears.length > 0 ? (
@@ -44,11 +43,9 @@ const YearPage = () => {
           <article
             key={index}
             className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl"
-            onClick={() => router.push(`/${year}`)}
+            onClick={() => router.push(`/year/${year}`)}
           >
-            {/* <Link key={index} href={`/year/${year}`}> */}
             {year}
-            {/* </Link> */}
           </article>
         ))
       ) : (
