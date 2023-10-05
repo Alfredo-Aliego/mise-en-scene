@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getMovieById } from "@/api/api";
-
+import Link from "next/link";
 type Movie = {
   imdb_id: string;
   title: string;
@@ -67,10 +67,13 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
           <span className="font-semibold">Rating:</span> {movie.rating}
         </p>
         <p className="mb-4">
-          <span className="font-semibold">IMDb Rating:</span>
+          <Link href={`https://www.imdb.com/title/${movie.imdb_id}`}>
+            <span className="font-semibold">IMDb Rating:</span>
+          </Link>
+
           <div
             className="rating rating-lg rating-half lg:tooltip"
-            data-tip={rating.toFixed(1)}
+            data-tip={rating}
           >
             {Array.from({ length: totalStars }).map((_, index) => {
               return (
