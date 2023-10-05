@@ -1,13 +1,9 @@
+"use client";
 import { getStills } from "../../api/api.js";
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
 
-type Movies = {
-  stills: Still[];
-  imdb_id: string;
-  title: string;
-};
 type Still = {
   id: number;
   image_url: string;
@@ -16,6 +12,16 @@ type Still = {
 
 export default function RandomPage() {
   const [stills, setStills] = useState<Still[]>([]);
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  async function fetchImages() {
+    let img: Still[] = await getStills();
+    setStills(img);
+    console.log(img);
+  }
 
   return (
     <div>
