@@ -23,8 +23,6 @@ const CountryPage = () => {
     getUniqueCountries();
   }, [countries]);
 
-  useEffect(() => {}, [uniqueCountries]);
-
   const fetchCountries = async () => {
     const fetchedCountries = await getCountriesOnly();
     setCountries(fetchedCountries);

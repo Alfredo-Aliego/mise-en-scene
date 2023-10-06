@@ -23,8 +23,6 @@ const GenrePage = () => {
     getUniqueGenres();
   }, [genres]);
 
-  useEffect(() => {}, [uniqueGenres]);
-
   const fetchGenres = async () => {
     const fetchedGenres = await getGenresOnly();
     setGenres(fetchedGenres);

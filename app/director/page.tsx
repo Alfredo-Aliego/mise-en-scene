@@ -23,8 +23,6 @@ const DirectorPage = () => {
     getUniqueDirectors();
   }, [directors]);
 
-  useEffect(() => {}, [uniqueDirectors]);
-
   const fetchDirectors = async () => {
     const fetchedDirectors = await getDirectorsOnly();
     setDirectors(fetchedDirectors);

@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getYearsOnly } from "@/api/api";
-import Link from "next/link";
 import LoadingBars from "../components/loading/LoadingBars";
 
 type Year = {
@@ -24,8 +23,6 @@ const YearPage = () => {
   useEffect(() => {
     getYears();
   }, [years]);
-
-  useEffect(() => {}, [uniqueYears]);
 
   const fetchYears = async () => {
     let fetchedYears: Year[] = await getYearsOnly();

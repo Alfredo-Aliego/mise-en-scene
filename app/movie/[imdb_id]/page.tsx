@@ -23,7 +23,7 @@ type Still = {
   imdb_id: string;
 };
 
-export default function Page({ params }: { params: { imdb_id: string } }) {
+const MovieDetailPage = ({ params }: { params: { imdb_id: string } }) => {
   const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
@@ -122,4 +122,6 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
       </FancyBox>
     </div>
   );
-}
+};
+
+export default MovieDetailPage;

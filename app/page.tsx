@@ -16,7 +16,7 @@ type Still = {
   imdb_id: string;
 };
 
-export default function HomePage() {
+const HomePage = () => {
   const [movies, setMovies] = useState<Movies[]>([]);
 
   useEffect(() => {
@@ -52,9 +52,13 @@ export default function HomePage() {
             </Fragment>
           ))
         ) : (
-          <LoadingBars />
+          <aside className="w-screen flex justify-center">
+            <LoadingBars />
+          </aside>
         )}
       </Masonry>
     </main>
   );
-}
+};
+
+export default HomePage;
