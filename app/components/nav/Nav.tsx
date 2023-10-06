@@ -5,25 +5,6 @@ import Background from "./Background";
 import { FC, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-type Still = {
-  id: number;
-  image_url: string;
-  imdb_id: string;
-};
-
-type Movies = {
-  stills: Still[];
-  imdb_id: string;
-  title: string;
-};
-
-type NavProps = {
-  searchBar: boolean;
-  setSearchBar: (searchBar: boolean) => void;
-  backgroundMode: boolean;
-  setBackgroundMode: (backgroundMode: boolean) => void;
-};
-
 const Nav: FC<NavProps> = ({
   searchBar,
   setSearchBar,
