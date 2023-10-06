@@ -74,3 +74,27 @@ type Year = {
 };
 
 type UniqueYear = number[];
+
+type YearParamsProps = {
+  params: {
+    year: string;
+  };
+};
+
+type GenreParamsProps = {
+  params: {
+    genre: string;
+  };
+};
+
+type DirectorParamsProps = {
+  params: {
+    director: string;
+  };
+};
+
+type CountryParamsProps = {
+  params: {
+    country: string;
+  };
+};
