@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { getDirectorsOnly } from "@/api/api";
-import Link from "next/link";
 import LoadingBars from "../loading/LoadingBars";
 
 type Director = {
@@ -11,6 +11,8 @@ type Director = {
 type UniqueDirector = string[];
 
 const Director = () => {
+  const router = useRouter();
+
   const [directors, setDirectors] = useState<Director[]>([]);
   const [uniqueDirectors, setUniqueDirectors] = useState<UniqueDirector>([]);
   const allDirectors: string[] = [];
@@ -37,20 +39,23 @@ const Director = () => {
   };
 
   return (
-    <main className="m-4 pt-4">
+    <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
       {uniqueDirectors.length > 0 ? (
         uniqueDirectors.map((director, index) => (
-          <Link
+          <article
             key={index}
-            href={`/director/${director}`}
-            className="block w-max"
+            className="w-[26vw] h-[13vw] flex justify-center items-center text-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current"
+            onClick={() => router.push(`/director/${director}`)}
           >
-            {director}
-          </Link>
+            {`[ ${director} ]`}
+          </article>
         ))
       ) : (
         <LoadingBars />
       )}
+
+      {/* Invisible for layout purposes */}
+      <div className="w-[26vw] h-[13vw] invisible"></div>
     </main>
   );
 };
