@@ -1,9 +1,5 @@
 import { FC } from "react";
 
-type SearchProps = {
-  handleSearch: () => void;
-};
-
 const Search: FC<SearchProps> = ({ handleSearch }) => {
   return (
     <>

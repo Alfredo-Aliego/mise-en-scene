@@ -5,12 +5,6 @@ import Link from "next/link";
 import Masonry from "react-masonry-css";
 import LoadingBars from "../components/loading/LoadingBars";
 
-type Still = {
-  id: number;
-  image_url: string;
-  imdb_id: string;
-};
-
 export default function RandomPage() {
   const [stills, setStills] = useState<Still[]>([]);
 

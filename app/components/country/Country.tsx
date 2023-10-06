@@ -4,12 +4,6 @@ import { getCountriesOnly } from "@/api/api";
 import Link from "next/link";
 import LoadingBars from "../loading/LoadingBars";
 
-type Country = {
-  country: string;
-};
-
-type UniqueCountry = string[];
-
 const Country = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [uniqueCountries, setUniqueCountries] = useState<UniqueCountry>([]);

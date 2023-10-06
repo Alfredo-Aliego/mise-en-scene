@@ -4,13 +4,6 @@ import { getTitlesOnly } from "../../../api/api";
 import Link from "next/link";
 import LoadingBars from "../loading/LoadingBars";
 
-type Title = {
-  title: any;
-  imdb_id: string;
-};
-
-type SortedTitle = Title[];
-
 const Movies = () => {
   const [titles, setTitles] = useState<Title[]>([]);
   const [sortedTitles, setSortedTitles] = useState<SortedTitle>([]);
