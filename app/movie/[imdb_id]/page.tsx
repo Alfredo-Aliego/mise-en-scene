@@ -1,41 +1,10 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { getMovieById } from "@/api/api";
-import Link from "next/link";
+import { getMovieById } from "@/api/lib/getMovieById";
 import FancyBox from "../../../hook/Fancy.jsx";
 import LoadingBars from "../../components/loading/LoadingBars";
 
-type Movie = {
-  imdb_id: string;
-  title: string;
-  date_released: string;
-  genre: string;
-  rating: string;
-  director: string;
-  country: string;
-  imdb_rating: string;
-  stills: Still[];
-};
-
-type Still = {
-  id: number;
-  image_url: string;
-  imdb_id: string;
-};
-
-const MovieDetailPage = ({ params }: { params: { imdb_id: string } }) => {
-  const [movie, setMovie] = useState<Movie | null>(null);
-
-  useEffect(() => {
-    fetchMovie();
-  }, []);
-
-  const fetchMovie = async () => {
-    let fetchedMovie: Movie = await getMovieById(params.imdb_id);
-    setMovie(fetchedMovie);
-    console.log(fetchedMovie);
-  };
-
+const MovieDetailPage = async ({ params }: { params: { imdb_id: string } }) => {
+  const movieData: Promise<Movie> = getMovieById(params.imdb_id);
+  const movie = await movieData;
   if (!movie) return <LoadingBars />;
 
   let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
