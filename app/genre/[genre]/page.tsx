@@ -1,19 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { queryYears } from "@/api/api";
+import { queryGenres } from "@/api/api";
 import Link from "next/link";
 import LoadingBars from "@/app/components/loading/LoadingBars";
 import Masonry from "react-masonry-css";
 
-const YearResultsPage = ({ params }: YearParamsProps) => {
+const GenreResultsPage = ({ params }: GenreParamsProps) => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
-    fetchMoviesByYear();
+    fetchMoviesByGenre();
   }, []);
 
-  const fetchMoviesByYear = async () => {
-    const fetchedMovies = await queryYears(params.year);
+  const fetchMoviesByGenre = async () => {
+    const fetchedMovies = await queryGenres(params.genre);
     setMovies(fetchedMovies);
   };
 
@@ -50,4 +50,4 @@ const YearResultsPage = ({ params }: YearParamsProps) => {
   );
 };
 
-export default YearResultsPage;
+export default GenreResultsPage;

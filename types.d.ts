@@ -80,3 +80,9 @@ type YearParamsProps = {
     year: string;
   };
 };
+
+type GenreParamsProps = {
+  params: {
+    genre: string;
+  };
+};
