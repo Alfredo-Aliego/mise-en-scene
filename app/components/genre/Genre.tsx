@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { getGenresOnly } from "@/api/api";
-import Link from "next/link";
 import LoadingBars from "../loading/LoadingBars";
 
 type Genre = {
@@ -11,6 +11,8 @@ type Genre = {
 type UniqueGenre = string[];
 
 const Genre = () => {
+  const router = useRouter();
+
   const [genres, setGenres] = useState<Genre[]>([]);
   const [uniqueGenres, setUniqueGenres] = useState<UniqueGenre>([]);
   const allGenres: string[] = [];
@@ -37,16 +39,23 @@ const Genre = () => {
   };
 
   return (
-    <main className="m-4 pt-4">
+    <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
       {uniqueGenres.length > 0 ? (
         uniqueGenres.map((genre, index) => (
-          <Link key={index} href={`/genre/${genre}`} className="block w-max">
-            {genre}
-          </Link>
+          <article
+            key={index}
+            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current"
+            onClick={() => router.push(`/genre/${genre}`)}
+          >
+            {`[ ${genre} ]`}
+          </article>
         ))
       ) : (
         <LoadingBars />
       )}
+
+      {/* Invisible for layout purposes */}
+      <div className="w-[26vw] h-[13vw] invisible"></div>
     </main>
   );
 };
