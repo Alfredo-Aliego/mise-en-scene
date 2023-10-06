@@ -1,40 +1,19 @@
-"use client";
-import { getMovies } from "../api/api.js";
-import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
-import Masonry from "react-masonry-css";
+import Masonry from "@/utils/Masonry";
 import LoadingBars from "./components/loading/LoadingBars";
+import getMovies from "@/api/lib/getMovies";
 
-type Movies = {
-  stills: Still[];
-  imdb_id: string;
-  title: string;
-};
-type Still = {
-  id: number;
-  image_url: string;
-  imdb_id: string;
-};
+const HomePage = async () => {
+  const movieData: Promise<Movies[]> = getMovies();
 
-const HomePage = () => {
-  const [movies, setMovies] = useState<Movies[]>([]);
-
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
-  async function fetchImages() {
-    let stills: Movies[] = await getMovies();
-    setMovies(stills);
-    console.log(stills);
-  }
+  const movies = await movieData;
 
   return (
     <main className="mr-4 pt-4 ">
       <Masonry breakpointCols={3} className="flex" columnClassName="pl-4">
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <Fragment key={movie.imdb_id}>
+            <div key={movie.imdb_id}>
               <div className="relative group overflow-hidden bg-gray-400 mb-4">
                 <img
                   src={movie.stills[11]?.image_url}
@@ -49,7 +28,7 @@ const HomePage = () => {
                   </span>
                 </div>
               </div>
-            </Fragment>
+            </div>
           ))
         ) : (
           <aside className="w-screen flex justify-center">
