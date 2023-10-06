@@ -24,7 +24,6 @@ type NavProps = {
   setBackgroundMode: (backgroundMode: boolean) => void;
 };
 
-
 const Nav: FC<NavProps> = ({
   searchBar,
   setSearchBar,
@@ -48,7 +47,7 @@ const Nav: FC<NavProps> = ({
     const value = inputValue;
     setInputValue("");
     router.push(`/results?query=${value}`);
-  }
+  };
 
   const handleSearch = () => setSearchBar(!searchBar);
 
@@ -59,7 +58,7 @@ const Nav: FC<NavProps> = ({
 
   return (
     <>
-      <main className="w-screen flex flex-col justify-between items-center p-4 h-20vh bg-black text-white relative">
+      <main className="w-screen flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-sm shadow-current">
         <header>Mise-En-Scène</header>
 
         <section className="flex w-screen justify-center z-10">
@@ -79,7 +78,7 @@ const Nav: FC<NavProps> = ({
       </main>
 
       <aside
-        className={`flex items-center absolute top-20vh left-0 w-full bg-black h-10vh transition-transform duration-500 ${
+        className={`flex items-center absolute top-20vh left-0 w-full h-10vh transition-transform duration-500 ${
           searchBar
             ? "transform translate-y-0"
             : "transform translate-y-[-10vh]"
@@ -93,8 +92,8 @@ const Nav: FC<NavProps> = ({
             type="text"
             value={inputValue}
             onChange={handleInputChange}
-            />
-          </form>
+          />
+        </form>
       </aside>
     </>
   );

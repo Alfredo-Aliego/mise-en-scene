@@ -3,6 +3,7 @@ import { getStills } from "../../api/api.js";
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
+import LoadingBars from "../components/loading/LoadingBars";
 
 type Still = {
   id: number;
@@ -59,7 +60,7 @@ export default function RandomPage() {
             </Fragment>
           ))
         ) : (
-          <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
+          <LoadingBars />
         )}
       </Masonry>
     </main>

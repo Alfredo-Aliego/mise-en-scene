@@ -1,37 +1,7 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { getTitlesOnly } from "../../api/api";
-import Link from "next/link";
-
-type Title = {
-  title: string;
-};
+import Movies from "../components/movies/Movies";
 
 const MoviesPage = () => {
-  const [titles, setTitles] = useState<Title[]>([]);
-
-  useEffect(() => {
-    fetchTitles();
-  }, []);
-
-  const fetchTitles = async () => {
-    let fetchedTitles: Title[] = await getTitlesOnly();
-    setTitles(fetchedTitles);
-  };
-
-  return (
-    <main className="m-4 pt-4">
-      {titles.length > 0 ? (
-        titles.map((title, index) => (
-          <Link key={index} href={`/${title.title}`} className="block w-max">
-            {title.title}
-          </Link>
-        ))
-      ) : (
-        <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
-      )}
-    </main>
-  );
+  return <Movies />;
 };
 
 export default MoviesPage;

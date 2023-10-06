@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { getMovieById } from "@/api/api";
 import Link from "next/link";
 import FancyBox from "../../../hook/Fancy.jsx";
+import LoadingBars from "../../components/loading/LoadingBars";
+
 type Movie = {
   imdb_id: string;
   title: string;
@@ -21,7 +23,7 @@ type Still = {
   imdb_id: string;
 };
 
-export default function Page({ params }: { params: { imdb_id: string } }) {
+const MovieDetailPage = ({ params }: { params: { imdb_id: string } }) => {
   const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
@@ -34,10 +36,7 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
     console.log(fetchedMovie);
   };
 
-  if (!movie)
-    return (
-      <aside className="block mx-auto loading loading-bars loading-lg scale-150"></aside>
-    );
+  if (!movie) return <LoadingBars />;
 
   let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
 
@@ -82,6 +81,7 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
             {Array.from({ length: totalStars }).map((_, index) => {
               return (
                 <input
+                  key={index}
                   type="radio"
                   name="rating-10"
                   className={`bg-yellow-500 mask mask-star-2 ${
@@ -123,4 +123,6 @@ export default function Page({ params }: { params: { imdb_id: string } }) {
       </FancyBox>
     </div>
   );
-}
+};
+
+export default MovieDetailPage;
