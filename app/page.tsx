@@ -21,7 +21,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchImages();
-  }, []);
+  });
 
   async function fetchImages() {
     let stills: Movies[] = await getMovies();

@@ -28,7 +28,7 @@ const MovieDetailPage = ({ params }: { params: { imdb_id: string } }) => {
 
   useEffect(() => {
     fetchMovie();
-  }, []);
+  });
 
   const fetchMovie = async () => {
     let fetchedMovie: Movie = await getMovieById(params.imdb_id);
@@ -81,6 +81,7 @@ const MovieDetailPage = ({ params }: { params: { imdb_id: string } }) => {
             {Array.from({ length: totalStars }).map((_, index) => {
               return (
                 <input
+                  key={index}
                   type="radio"
                   name="rating-10"
                   className={`bg-yellow-500 mask mask-star-2 ${

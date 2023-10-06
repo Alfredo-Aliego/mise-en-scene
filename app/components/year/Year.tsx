@@ -18,7 +18,7 @@ const Year = () => {
 
   useEffect(() => {
     fetchYears();
-  }, []);
+  });
 
   useEffect(() => {
     getYears();

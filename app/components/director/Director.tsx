@@ -17,7 +17,7 @@ const Director = () => {
 
   useEffect(() => {
     fetchDirectors();
-  }, []);
+  });
 
   useEffect(() => {
     getUniqueDirectors();

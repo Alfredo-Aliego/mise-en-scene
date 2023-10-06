@@ -17,7 +17,7 @@ const Movies = () => {
 
   useEffect(() => {
     fetchTitles();
-  }, []);
+  });
 
   useEffect(() => {
     sortTitles();

@@ -17,7 +17,7 @@ const Country = () => {
 
   useEffect(() => {
     fetchCountries();
-  }, []);
+  });
 
   useEffect(() => {
     getUniqueCountries();
