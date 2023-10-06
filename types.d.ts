@@ -92,3 +92,9 @@ type DirectorParamsProps = {
     director: string;
   };
 };
+
+type CountryParamsProps = {
+  params: {
+    country: string;
+  };
+};
