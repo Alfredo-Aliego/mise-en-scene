@@ -74,3 +74,9 @@ type Year = {
 };
 
 type UniqueYear = number[];
+
+type YearParamsProps = {
+  params: {
+    year: string;
+  };
+};
