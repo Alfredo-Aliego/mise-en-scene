@@ -12,6 +12,7 @@ type UniqueYear = number[];
 
 const Year = () => {
   const router = useRouter();
+
   const [years, setYears] = useState<Year[]>([]);
   const [uniqueYears, setUniqueYears] = useState<UniqueYear>([]);
   const allYears: number[] = [];
@@ -40,10 +41,10 @@ const Year = () => {
         uniqueYears.map((year, index) => (
           <article
             key={index}
-            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl shadow-lg shadow-current"
+            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current"
             onClick={() => router.push(`/year/${year}`)}
           >
-            {year}
+            {`[ ${year} ]`}
           </article>
         ))
       ) : (
