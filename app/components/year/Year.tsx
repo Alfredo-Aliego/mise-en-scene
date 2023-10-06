@@ -18,7 +18,7 @@ const Year = () => {
 
   useEffect(() => {
     fetchYears();
-  });
+  }, []);
 
   useEffect(() => {
     getYears();
@@ -54,3 +54,35 @@ const Year = () => {
 };
 
 export default Year;
+
+// import React from "react";
+// import { useRouter } from "next/navigation";
+// import LoadingBars from "../loading/LoadingBars";
+
+// type YearProps = {
+//   years: string[]; // Assuming the prop is an array of years
+// };
+
+// const Year = ({ years }: YearProps) => {
+//   const router = useRouter();
+
+//   return (
+//     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
+//       {years.length > 0 ? (
+//         years.map((year, index) => (
+//           <article
+//             key={index}
+//             className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl shadow-lg shadow-current"
+//             onClick={() => router.push(`/year/${year}`)}
+//           >
+//             {year}
+//           </article>
+//         ))
+//       ) : (
+//         <LoadingBars />
+//       )}
+//     </main>
+//   );
+// };
+
+// export default Year;

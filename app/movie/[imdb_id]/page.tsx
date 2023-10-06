@@ -28,7 +28,7 @@ const MovieDetailPage = ({ params }: { params: { imdb_id: string } }) => {
 
   useEffect(() => {
     fetchMovie();
-  });
+  }, []);
 
   const fetchMovie = async () => {
     let fetchedMovie: Movie = await getMovieById(params.imdb_id);

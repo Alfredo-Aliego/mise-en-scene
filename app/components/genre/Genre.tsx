@@ -17,7 +17,7 @@ const Genre = () => {
 
   useEffect(() => {
     fetchGenres();
-  });
+  }, []);
 
   useEffect(() => {
     getUniqueGenres();
