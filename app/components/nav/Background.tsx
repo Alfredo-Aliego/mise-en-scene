@@ -1,10 +1,5 @@
 import React, { FC } from "react";
 
-type BackgroundProps = {
-  handleBackground: () => void;
-  canClick: boolean;
-};
-
 const Background: FC<BackgroundProps> = ({ handleBackground, canClick }) => {
   return (
     <label className="swap swap-rotate absolute bottom-4 right-4">

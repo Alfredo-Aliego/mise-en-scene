@@ -4,12 +4,6 @@ import { useRouter } from "next/navigation";
 import { getYearsOnly } from "@/api/api";
 import LoadingBars from "../loading/LoadingBars";
 
-type Year = {
-  year: string;
-};
-
-type UniqueYear = number[];
-
 const Year = () => {
   const router = useRouter();
 

@@ -4,12 +4,6 @@ import { useRouter } from "next/navigation";
 import { getDirectorsOnly } from "@/api/api";
 import LoadingBars from "../loading/LoadingBars";
 
-type Director = {
-  director: string;
-};
-
-type UniqueDirector = string[];
-
 const Director = () => {
   const router = useRouter();
 

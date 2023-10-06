@@ -4,12 +4,6 @@ import { useRouter } from "next/navigation";
 import { getGenresOnly } from "@/api/api";
 import LoadingBars from "../loading/LoadingBars";
 
-type Genre = {
-  genre: string;
-};
-
-type UniqueGenre = string[];
-
 const Genre = () => {
   const router = useRouter();
 
