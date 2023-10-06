@@ -5,10 +5,11 @@ import Link from "next/link";
 import LoadingBars from "../components/loading/LoadingBars";
 
 type Title = {
-  title: string;
+  title: any;
+  imdb_id: string;
 };
 
-type SortedTitle = string[];
+type SortedTitle = Title[];
 
 const MoviesPage = () => {
   const [titles, setTitles] = useState<Title[]>([]);
@@ -22,26 +23,24 @@ const MoviesPage = () => {
     sortTitles();
   }, [titles]);
 
-  useEffect(() => {}, [sortedTitles]);
-
   const fetchTitles = async () => {
     const fetchedTitles: Title[] = await getTitlesOnly();
     setTitles(fetchedTitles);
   };
 
-  const sortTitles = () => {
-    titles.forEach((title) => {
-      sortedTitles.push(title.title);
-    });
-    setSortedTitles(sortedTitles.sort());
-  };
+  const sortTitles = () =>
+    setSortedTitles([...titles].sort((a, b) => a.title.localeCompare(b.title)));
 
   return (
     <main className="m-4 pt-4">
       {sortedTitles.length > 0 ? (
         sortedTitles.map((title, index) => (
-          <Link key={index} href={`/movie/${title}`} className="block w-max">
-            {title}
+          <Link
+            key={index}
+            href={`/movie/${title.imdb_id}`}
+            className="block w-max"
+          >
+            {title.title}
           </Link>
         ))
       ) : (
