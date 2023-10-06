@@ -86,3 +86,9 @@ type GenreParamsProps = {
     genre: string;
   };
 };
+
+type DirectorParamsProps = {
+  params: {
+    director: string;
+  };
+};
