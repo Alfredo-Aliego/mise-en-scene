@@ -43,7 +43,7 @@ const MovieDetailPage = async ({ params }: { params: { imdb_id: string } }) => {
             <span className="font-semibold hover:underline">IMDb Rating:</span>
           </a>
 
-          <div
+          <span
             className="rating rating-lg rating-half lg:tooltip"
             data-tip={rating}
           >
@@ -60,7 +60,7 @@ const MovieDetailPage = async ({ params }: { params: { imdb_id: string } }) => {
                 />
               );
             })}
-          </div>
+          </span>
         </p>
       </div>
       <FancyBox
