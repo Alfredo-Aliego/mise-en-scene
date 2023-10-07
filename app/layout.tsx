@@ -31,7 +31,7 @@ export default function RootLayout({
           setBackgroundMode={setBackgroundMode}
         />
         <div
-          className={`mt-[10vh] transition-transform duration-50 ${
+          className={`mt-[10vh] transition-transform duration-50 w-full ${
             searchBar
               ? "transform translate-y-0"
               : "transform translate-y-[-10vh]"

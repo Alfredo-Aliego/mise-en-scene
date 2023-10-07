@@ -9,8 +9,12 @@ const HomePage = async () => {
   const movies = await movieData;
 
   return (
-    <main className="mr-4 pt-4 ">
-      <Masonry breakpointCols={3} className="flex" columnClassName="pl-4">
+    <main>
+      <Masonry
+        breakpointCols={3}
+        className="flex"
+        columnClassName="pl-4 pr-4  pt-4"
+      >
         {movies.length > 0 ? (
           movies.map((movie) => (
             <div key={movie.imdb_id}>

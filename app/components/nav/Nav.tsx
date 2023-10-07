@@ -39,10 +39,10 @@ const Nav: FC<NavProps> = ({
 
   return (
     <>
-      <main className="w-screen flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-sm shadow-current">
-        <header>Mise-En-Scène</header>
+      <main className="w-full flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-sm shadow-current">
+        <header>[Mise-En-Scène]</header>
 
-        <section className="flex w-screen justify-center z-10">
+        <section className="flex w-full justify-center z-10">
           <Search handleSearch={handleSearch} />
 
           <nav className="flex gap-5">
@@ -59,18 +59,21 @@ const Nav: FC<NavProps> = ({
       </main>
 
       <aside
-        className={`flex items-center absolute top-20vh left-0 w-full h-10vh transition-transform duration-500 ${
+        className={`flex flex-grow items-center absolute top-20vh left-0 w-full h-10vh transition-transform duration-500  ${
           searchBar
-            ? "transform translate-y-0"
+            ? "transform translate-y-0 bg-primary shadow-[rgba(0,0,15,0.5)_0px_5px_4px_0px]"
             : "transform translate-y-[-10vh]"
         }`}
       >
-        <form onSubmit={handleSubmit}>
+        <form className="flex w-full" onSubmit={handleSubmit}>
           <input
-            className={`w-screen px-4 transition-opacity outline-none ${
-              searchBar ? "delay-500 opacity-100" : "opacity-0 invisible"
+            className={`pl-4 text-black bg-zinc-200 flex-grow mx-4 h-12 transition-opacity outline-none ${
+              searchBar
+                ? "delay-500 opacity-100 "
+                : " delay-1500 opacity-0 invisible"
             }`}
             type="text"
+            placeholder="Search..."
             value={inputValue}
             onChange={handleInputChange}
           />
