@@ -13,15 +13,15 @@ const config: Config = {
       "lofi",
       {
         customLight: {
-          primary: "#efefef", // light gray
-          secondary: "#3eb370", // This color needs to be adjusted
+          primary: "#EFEFEF", // light gray
+          secondary: "#FFFFFF", // This color needs to be adjusted
           text: "#000000",
           "base-100": "#ffffff",
         },
         customDark: {
           primary: "#101010",
 
-          secondary: "#1f2937",
+          secondary: "#181818",
           text: "#ffffff",
 
           accent: "#374151",

@@ -67,7 +67,7 @@ const Nav: FC<NavProps> = ({
       >
         <form className="flex w-full" onSubmit={handleSubmit}>
           <input
-            className={`pl-4 text-black bg-secondary flex-grow mx-4 h-12 transition-opacity outline-none ${
+            className={`pl-4 text-text bg-secondary flex-grow mx-4 h-12 transition-opacity outline-none ${
               searchBar
                 ? "delay-500 opacity-100 "
                 : " delay-1500 opacity-0 invisible"
