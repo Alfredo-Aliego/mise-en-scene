@@ -6,7 +6,7 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
     <>
       <aside className="absolute left-4 cursor-pointer" onClick={handleSearch}>
         <MagnifyingGlassCircleIcon
-          className="h-8 w-8 text-gray-700 cursor-pointer"
+          className="h-8 w-8 text-text cursor-pointer"
           onClick={handleSearch}
         />
       </aside>

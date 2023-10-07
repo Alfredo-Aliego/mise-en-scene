@@ -15,18 +15,20 @@ const config: Config = {
         customLight: {
           primary: "#efefef", // light gray
           secondary: "#3eb370", // This color needs to be adjusted
+          text: "#000000",
           "base-100": "#ffffff",
         },
         customDark: {
           primary: "#101010",
 
-          secondary: "#000000",
+          secondary: "#1f2937",
+          text: "#ffffff",
 
           accent: "#374151",
 
           neutral: "#2a323c",
 
-          "base-100": "#1d232a",
+          "base-100": "#000000",
         },
       },
     ],
