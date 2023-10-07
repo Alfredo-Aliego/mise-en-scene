@@ -40,12 +40,14 @@ const Nav: FC<NavProps> = ({
   return (
     <>
       <main className="w-full flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-[rgba(0,0,15,0.5)_0px_4px_3px_0px]">
-        <header>[Mise-En-Scène]</header>
+        <header className="flex justify-center text-4xl font-mono items-center w-full h-full">
+          <h1>[Mise-En-Scène]</h1>
+        </header>
 
         <section className="flex w-full justify-center z-10">
           <Search handleSearch={handleSearch} />
 
-          <nav className="flex gap-5">
+          <nav className="flex gap-5 font-mono">
             <Link href="/">Home</Link>
             <Link href="/movies">Movies</Link>
             <Link href="/director">Director</Link>
