@@ -9,11 +9,24 @@ const config: Config = {
   daisyui: {
     themes: [
       "luxury",
+      "dark",
+      "lofi",
       {
         customLight: {
           primary: "#efefef", // light gray
           secondary: "#3eb370", // This color needs to be adjusted
           "base-100": "#ffffff",
+        },
+        customDark: {
+          primary: "#101010",
+
+          secondary: "#000000",
+
+          accent: "#374151",
+
+          neutral: "#2a323c",
+
+          "base-100": "#1d232a",
         },
       },
     ],

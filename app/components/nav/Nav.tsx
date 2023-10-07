@@ -39,7 +39,7 @@ const Nav: FC<NavProps> = ({
 
   return (
     <>
-      <main className="w-full flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-sm shadow-current">
+      <main className="w-full flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-[rgba(0,0,15,0.5)_0px_4px_3px_0px]">
         <header>[Mise-En-Scène]</header>
 
         <section className="flex w-full justify-center z-10">

@@ -22,7 +22,10 @@ export default function RootLayout({
   const [backgroundMode, setBackgroundMode] = useState(false);
 
   return (
-    <html data-theme={`${backgroundMode ? "luxury" : "customLight"}`} lang="en">
+    <html
+      data-theme={`${backgroundMode ? "customDark" : "customLight"}`}
+      lang="en"
+    >
       <body className={inter.className}>
         <Nav
           searchBar={searchBar}
@@ -31,7 +34,7 @@ export default function RootLayout({
           setBackgroundMode={setBackgroundMode}
         />
         <div
-          className={`mt-[10vh] transition-transform duration-50 w-full ${
+          className={`mt-[10vh] transition-transform duration-100 w-full ${
             searchBar
               ? "transform translate-y-0"
               : "transform translate-y-[-10vh]"
