@@ -6,9 +6,7 @@ const Background: FC<BackgroundProps> = ({ handleBackground, canClick }) => {
       <input type="checkbox" />
 
       <svg
-        className={`fill-current w-10 h-10 ${
-          canClick ? "invisible" : "swap on"
-        }`}
+        className={`fill-current w-8 h-8 ${canClick ? "invisible" : "swap on"}`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         onClick={handleBackground}
@@ -17,7 +15,7 @@ const Background: FC<BackgroundProps> = ({ handleBackground, canClick }) => {
       </svg>
 
       <svg
-        className={`fill-current w-10 h-10 ${
+        className={`fill-current w-8 h-8 ${
           canClick ? "swap off" : "invisible"
         }`}
         xmlns="http://www.w3.org/2000/svg"

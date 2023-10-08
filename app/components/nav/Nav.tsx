@@ -5,25 +5,6 @@ import Background from "./Background";
 import { FC, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-type Still = {
-  id: number;
-  image_url: string;
-  imdb_id: string;
-};
-
-type Movies = {
-  stills: Still[];
-  imdb_id: string;
-  title: string;
-};
-
-type NavProps = {
-  searchBar: boolean;
-  setSearchBar: (searchBar: boolean) => void;
-  backgroundMode: boolean;
-  setBackgroundMode: (backgroundMode: boolean) => void;
-};
-
 const Nav: FC<NavProps> = ({
   searchBar,
   setSearchBar,
@@ -58,13 +39,15 @@ const Nav: FC<NavProps> = ({
 
   return (
     <>
-      <main className="w-screen flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-sm shadow-current">
-        <header>Mise-En-Scène</header>
+      <main className="w-full flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-[rgba(0,0,15,0.5)_0px_4px_3px_0px]">
+        <header className="flex justify-center text-4xl font-mono items-center w-full h-full">
+          <h1>[Mise-En-Scène]</h1>
+        </header>
 
-        <section className="flex w-screen justify-center z-10">
+        <section className="flex w-full justify-center z-10">
           <Search handleSearch={handleSearch} />
 
-          <nav className="flex gap-5">
+          <nav className="flex gap-5 font-mono">
             <Link href="/">Home</Link>
             <Link href="/movies">Movies</Link>
             <Link href="/director">Director</Link>
@@ -78,18 +61,21 @@ const Nav: FC<NavProps> = ({
       </main>
 
       <aside
-        className={`flex items-center absolute top-20vh left-0 w-full h-10vh transition-transform duration-500 ${
+        className={`flex flex-grow items-center absolute top-20vh left-0 w-full h-10vh transition-transform duration-500  ${
           searchBar
-            ? "transform translate-y-0"
+            ? "transform translate-y-0 bg-primary shadow-[rgba(0,0,15,0.5)_0px_5px_4px_0px]"
             : "transform translate-y-[-10vh]"
         }`}
       >
-        <form onSubmit={handleSubmit}>
+        <form className="flex w-full" onSubmit={handleSubmit}>
           <input
-            className={`w-screen px-4 transition-opacity outline-none ${
-              searchBar ? "delay-500 opacity-100" : "opacity-0 invisible"
+            className={`pl-4 text-text bg-secondary flex-grow mx-4 h-12 transition-opacity outline-none ${
+              searchBar
+                ? "delay-500 opacity-100 "
+                : " delay-1500 opacity-0 invisible"
             }`}
             type="text"
+            placeholder="Search..."
             value={inputValue}
             onChange={handleInputChange}
           />

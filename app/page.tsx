@@ -9,14 +9,18 @@ const HomePage = async () => {
   const movies = await movieData;
 
   return (
-    <main className="mr-4 pt-4 ">
-      <Masonry breakpointCols={3} className="flex" columnClassName="pl-4">
+    <main>
+      <Masonry
+        breakpointCols={3}
+        className="flex"
+        columnClassName="pl-4 pr-4  pt-4"
+      >
         {movies.length > 0 ? (
           movies.map((movie) => (
             <div key={movie.imdb_id}>
               <div className="relative group overflow-hidden bg-gray-400 mb-4">
                 <img
-                  src={movie.stills[11]?.image_url}
+                  src={movie.stills[22]?.image_url}
                   alt={movie.title}
                   className="transition-transform transform group-hover:scale-110 w-full h-auto "
                 />
