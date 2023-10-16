@@ -83,7 +83,7 @@ const SearchResultsPage = () => {
               <div className="relative group overflow-hidden bg-gray-400 mb-4">
                 <Link href={`/movie/${movie.imdb_id}`}>
                   <img
-                    src={movie.stills[11]?.image_url}
+                    src={movie.stills[22]?.image_url}
                     alt={movie.title}
                     className="transition-transform transform group-hover:scale-110 w-full h-auto "
                   />
