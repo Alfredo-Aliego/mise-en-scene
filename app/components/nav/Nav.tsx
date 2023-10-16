@@ -11,9 +11,24 @@ const Nav: FC<NavProps> = ({
   backgroundMode,
   setBackgroundMode,
 }) => {
+  const router = useRouter();
+
   const [canClick, setCanClick] = useState(true);
   const [inputValue, setInputValue] = useState("");
-  const router = useRouter();
+
+  useEffect(() => {
+    const storedBackgroundMode = localStorage.getItem("backgroundMode");
+    const storedIcon = localStorage.getItem("canClick");
+
+    if (storedBackgroundMode)
+      setBackgroundMode(JSON.parse(storedBackgroundMode));
+    if (storedIcon) setCanClick(JSON.parse(storedIcon));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("backgroundMode", JSON.stringify(backgroundMode));
+    localStorage.setItem("canClick", JSON.stringify(canClick));
+  }, [backgroundMode]);
 
   // search bar input handler
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
