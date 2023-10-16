@@ -11,9 +11,24 @@ const Nav: FC<NavProps> = ({
   backgroundMode,
   setBackgroundMode,
 }) => {
+  const router = useRouter();
+
   const [canClick, setCanClick] = useState(true);
   const [inputValue, setInputValue] = useState("");
-  const router = useRouter();
+
+  useEffect(() => {
+    const storedBackgroundMode = localStorage.getItem("backgroundMode");
+    const storedIcon = localStorage.getItem("canClick");
+
+    if (storedBackgroundMode)
+      setBackgroundMode(JSON.parse(storedBackgroundMode));
+    if (storedIcon) setCanClick(JSON.parse(storedIcon));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("backgroundMode", JSON.stringify(backgroundMode));
+    localStorage.setItem("canClick", JSON.stringify(canClick));
+  }, [backgroundMode]);
 
   // search bar input handler
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +56,7 @@ const Nav: FC<NavProps> = ({
     <>
       <main className="w-full flex flex-col justify-between items-center p-4 h-20vh relative bg-primary shadow-[rgba(0,0,15,0.5)_0px_4px_3px_0px]">
         <header className="flex justify-center text-4xl font-mono items-center w-full h-full">
-          <h1>[Mise-En-Scène]</h1>
+          <h1>[ Mise-En-Scène ]</h1>
         </header>
 
         <section className="flex w-full justify-center z-10">
