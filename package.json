@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.24",
+    "@heroicons/react": "^2.0.18",
     "axios": "^1.5.1",
     "next": "latest",
     "react": "latest",

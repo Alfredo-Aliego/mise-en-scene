@@ -1,28 +1,14 @@
-"use client";
-import { useState, useEffect } from "react";
-import { getTitlesOnly } from "../../../api/api";
 import Link from "next/link";
 import LoadingBars from "../loading/LoadingBars";
+import { getTitlesOnly } from "@/api/lib/getTitlesOnly";
 
-const Movies = () => {
-  const [titles, setTitles] = useState<Title[]>([]);
-  const [sortedTitles, setSortedTitles] = useState<SortedTitle>([]);
+const Movies = async () => {
+  const titleData: Promise<Title[]> = getTitlesOnly();
+  const titles = await titleData;
 
-  useEffect(() => {
-    fetchTitles();
-  }, []);
-
-  useEffect(() => {
-    sortTitles();
-  }, [titles]);
-
-  const fetchTitles = async () => {
-    const fetchedTitles: Title[] = await getTitlesOnly();
-    setTitles(fetchedTitles);
-  };
-
-  const sortTitles = () =>
-    setSortedTitles([...titles].sort((a, b) => a.title.localeCompare(b.title)));
+  const sortedTitles = [...titles].sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
 
   return (
     <main className="m-4 pt-4">

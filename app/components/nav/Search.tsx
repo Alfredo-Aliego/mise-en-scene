@@ -1,10 +1,14 @@
 import { FC } from "react";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 
 const Search: FC<SearchProps> = ({ handleSearch }) => {
   return (
     <>
       <aside className="absolute left-4 cursor-pointer" onClick={handleSearch}>
-        Search
+        <MagnifyingGlassCircleIcon
+          className="h-8 w-8 text-text cursor-pointer"
+          onClick={handleSearch}
+        />
       </aside>
     </>
   );
