@@ -1,45 +1,27 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { getYearsOnly } from "@/api/api";
+import Link from "next/link";
+import { getYearsOnly } from "@/api/lib/getYearsOnly";
 import LoadingBars from "../loading/LoadingBars";
 
-const Year = () => {
-  const router = useRouter();
+const Year = async () => {
+  const years: Promise<Year[]> = getYearsOnly();
+  let allYears = await years;
+  let sortedYears: number[] = [];
 
-  const [years, setYears] = useState<Year[]>([]);
-  const [uniqueYears, setUniqueYears] = useState<UniqueYear>([]);
-  const allYears: number[] = [];
+  allYears.forEach((year) => sortedYears.push(parseInt(year.year)));
 
-  useEffect(() => {
-    fetchYears();
-  }, []);
-
-  useEffect(() => {
-    getYears();
-  }, [years]);
-
-  const fetchYears = async () => {
-    let fetchedYears: Year[] = await getYearsOnly();
-    setYears(fetchedYears);
-  };
-
-  const getYears = () => {
-    years.forEach((year) => allYears.push(parseInt(year.year)));
-    setUniqueYears(allYears.sort((a, b) => a - b));
-  };
+  sortedYears.sort((a, b) => a - b).map((year) => ({ year }));
 
   return (
     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
-      {uniqueYears.length > 0 ? (
-        uniqueYears.map((year, index) => (
-          <article
+      {sortedYears.length > 0 ? (
+        sortedYears.map((year, index) => (
+          <Link
             key={index}
+            href={`/year/${year}`}
             className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current"
-            onClick={() => router.push(`/year/${year}`)}
           >
             {`[ ${year} ]`}
-          </article>
+          </Link>
         ))
       ) : (
         <LoadingBars />
@@ -49,35 +31,3 @@ const Year = () => {
 };
 
 export default Year;
-
-// import React from "react";
-// import { useRouter } from "next/navigation";
-// import LoadingBars from "../loading/LoadingBars";
-
-// type YearProps = {
-//   years: string[]; // Assuming the prop is an array of years
-// };
-
-// const Year = ({ years }: YearProps) => {
-//   const router = useRouter();
-
-//   return (
-//     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
-//       {years.length > 0 ? (
-//         years.map((year, index) => (
-//           <article
-//             key={index}
-//             className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-6xl shadow-lg shadow-current"
-//             onClick={() => router.push(`/year/${year}`)}
-//           >
-//             {year}
-//           </article>
-//         ))
-//       ) : (
-//         <LoadingBars />
-//       )}
-//     </main>
-//   );
-// };
-
-// export default Year;
