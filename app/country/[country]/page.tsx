@@ -1,27 +1,18 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { queryCountries } from "@/api/api";
+import { queryCountries } from "@/api/lib/queryCountries";
 import Link from "next/link";
 import LoadingBars from "@/app/components/loading/LoadingBars";
 import Masonry from "react-masonry-css";
 
-const CountryResultsPage = ({ params }: CountryParamsProps) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-
-  useEffect(() => {
-    fetchMoviesByCountry();
-  }, []);
-
-  const fetchMoviesByCountry = async () => {
-    const fetchedMovies = await queryCountries(params.country);
-    setMovies(fetchedMovies);
-  };
+const CountryResultsPage = async ({ params }: CountryParamsProps) => {
+  const movies: Promise<Movie[]> = queryCountries(params.country);
+  const fetchedMovies = await movies;
 
   return (
     <main className="mr-4 pt-8">
       <Masonry breakpointCols={3} className="flex" columnClassName="pl-4">
-        {movies.length > 0 ? (
-          movies.map((movie) => (
+        {fetchedMovies.length > 0 ? (
+          fetchedMovies.map((movie) => (
             <article
               key={movie.imdb_id}
               className="relative group overflow-hidden bg-gray-400 mb-4"
