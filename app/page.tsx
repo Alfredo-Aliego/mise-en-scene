@@ -4,8 +4,7 @@ import LoadingBars from "./components/loading/LoadingBars";
 import getMovies from "@/api/lib/getMovies";
 
 const HomePage = async () => {
-  const movieData: Promise<Movies[]> = getMovies();
-
+  const movieData: movieData = getMovies();
   const movies = await movieData;
 
   return (

@@ -2,9 +2,10 @@ import { getMovieById } from "@/api/lib/getMovieById";
 import FancyBox from "../../../hook/Fancy.jsx";
 import LoadingBars from "../../components/loading/LoadingBars";
 
-const MovieDetailPage = async ({ params }: { params: { imdb_id: string } }) => {
-  const movieData: Promise<Movie> = getMovieById(params.imdb_id);
-  const movie = await movieData;
+const MovieDetailPage = async ({ params }: MovieDetailParamsProps) => {
+  const movieDetailData: movieDetailData = getMovieById(params.imdb_id);
+  const movie = await movieDetailData;
+
   if (!movie) return <LoadingBars />;
 
   let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
@@ -12,8 +13,6 @@ const MovieDetailPage = async ({ params }: { params: { imdb_id: string } }) => {
   let radioIndex = Math.round(rating * 2) - 1;
 
   const totalStars = 10;
-
-  console.log(rating);
 
   return (
     <div className="container mx-auto px-4 my-12">

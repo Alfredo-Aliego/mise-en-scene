@@ -67,6 +67,12 @@ type BackgroundProps = {
   canClick: boolean;
 };
 
+type MovieDetailParamsProps = {
+  params: {
+    imdb_id: string;
+  };
+};
+
 type DirectorParamsProps = {
   params: {
     director: string;
@@ -92,3 +98,7 @@ type CountryParamsProps = {
 };
 
 type query = string;
+
+type movieData = Promise<Movie[]>;
+
+type movieDetailData = Promise<Movie>;

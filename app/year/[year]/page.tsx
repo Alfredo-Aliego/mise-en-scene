@@ -5,14 +5,14 @@ import LoadingBars from "@/app/components/loading/LoadingBars";
 import Masonry from "react-masonry-css";
 
 const YearResultsPage = async ({ params }: YearParamsProps) => {
-  const movies: Promise<Movie[]> = queryYears(params.year);
-  const fetchedMovies = await movies;
+  const movieData: movieData = queryYears(params.year);
+  const movies = await movieData;
 
   return (
     <main className="mr-4 pt-8">
       <Masonry breakpointCols={3} className="flex" columnClassName="pl-4">
-        {fetchedMovies.length > 0 ? (
-          fetchedMovies.map((movie) => (
+        {movies.length > 0 ? (
+          movies.map((movie) => (
             <article
               key={movie.imdb_id}
               className="relative group overflow-hidden bg-gray-400 mb-4"
