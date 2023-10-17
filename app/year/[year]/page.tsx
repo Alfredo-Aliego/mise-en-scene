@@ -1,27 +1,18 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { queryYears } from "@/api/api";
+import { queryYears } from "@/api/lib/queryYears";
 import Link from "next/link";
 import LoadingBars from "@/app/components/loading/LoadingBars";
 import Masonry from "react-masonry-css";
 
-const YearResultsPage = ({ params }: YearParamsProps) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-
-  useEffect(() => {
-    fetchMoviesByYear();
-  }, []);
-
-  const fetchMoviesByYear = async () => {
-    const fetchedMovies = await queryYears(params.year);
-    setMovies(fetchedMovies);
-  };
+const YearResultsPage = async ({ params }: YearParamsProps) => {
+  const movies: Promise<Movie[]> = queryYears(params.year);
+  const fetchedMovies = await movies;
 
   return (
     <main className="mr-4 pt-8">
       <Masonry breakpointCols={3} className="flex" columnClassName="pl-4">
-        {movies.length > 0 ? (
-          movies.map((movie) => (
+        {fetchedMovies.length > 0 ? (
+          fetchedMovies.map((movie) => (
             <article
               key={movie.imdb_id}
               className="relative group overflow-hidden bg-gray-400 mb-4"
