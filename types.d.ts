@@ -28,17 +28,21 @@ type Director = {
 
 type UniqueDirector = string[];
 
-type Country = {
-  country: string;
-};
-
-type UniqueCountry = string[];
-
 type Genre = {
   genre: string;
 };
 
 type UniqueGenre = string[];
+
+type Year = {
+  year: string;
+};
+
+type Country = {
+  country: string;
+};
+
+type UniqueCountry = string[];
 
 type Title = {
   title: any;
@@ -63,21 +67,9 @@ type BackgroundProps = {
   canClick: boolean;
 };
 
-type Genre = {
-  genre: string;
-};
-
-type UniqueGenre = string[];
-
-type Year = {
-  year: string;
-};
-
-type UniqueYear = number[];
-
-type YearParamsProps = {
+type DirectorParamsProps = {
   params: {
-    year: string;
+    director: string;
   };
 };
 
@@ -87,9 +79,9 @@ type GenreParamsProps = {
   };
 };
 
-type DirectorParamsProps = {
+type YearParamsProps = {
   params: {
-    director: string;
+    year: string;
   };
 };
 
@@ -98,3 +90,5 @@ type CountryParamsProps = {
     country: string;
   };
 };
+
+type query = string;
