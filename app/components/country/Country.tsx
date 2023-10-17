@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getCountriesOnly } from "@/api/api";
-import { useRouter } from "next/navigation";
 import LoadingBars from "../loading/LoadingBars";
 
 const Country = () => {
