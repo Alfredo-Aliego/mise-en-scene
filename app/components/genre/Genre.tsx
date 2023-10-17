@@ -1,48 +1,29 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { getGenresOnly } from "@/api/api";
+import { getGenresOnly } from "@/api/lib/getGenresOnly";
 import LoadingBars from "../loading/LoadingBars";
+import Link from "next/link";
 
-const Genre = () => {
-  const router = useRouter();
+const Genre = async () => {
+  const uniqueGenres: Promise<Genre[]> = getGenresOnly();
+  let genres = await uniqueGenres;
 
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [uniqueGenres, setUniqueGenres] = useState<UniqueGenre>([]);
-  const allGenres: string[] = [];
+  let allGenres: string[] = [];
 
-  useEffect(() => {
-    fetchGenres();
-  }, []);
+  genres.forEach((genre) => {
+    const splitGenres = genre.genre.split(", ");
+    allGenres = allGenres.concat(splitGenres);
+  });
 
-  useEffect(() => {
-    getUniqueGenres();
-  }, [genres]);
-
-  const fetchGenres = async () => {
-    const fetchedGenres = await getGenresOnly();
-    setGenres(fetchedGenres);
-  };
-
-  const getUniqueGenres = () => {
-    genres.forEach((genre) => {
-      const splitGenres = genre.genre.split(", ");
-      allGenres.push(...splitGenres);
-    });
-    setUniqueGenres(Array.from(new Set(allGenres.sort())));
-  };
+  genres = Array.from(new Set(allGenres.sort())).map((genre) => ({ genre }));
 
   return (
     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
-      {uniqueGenres.length > 0 ? (
-        uniqueGenres.map((genre, index) => (
-          <article
-            key={index}
-            className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current"
-            onClick={() => router.push(`/genre/${genre}`)}
-          >
-            {`[ ${genre} ]`}
-          </article>
+      {genres.length > 0 ? (
+        genres.map((genre, index) => (
+          <Link key={index} href={`/genre/${genre.genre}`}>
+            <article className="w-[26vw] h-[13vw] flex justify-center items-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current">
+              {`[ ${genre.genre} ]`}
+            </article>
+          </Link>
         ))
       ) : (
         <LoadingBars />

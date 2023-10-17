@@ -4,10 +4,18 @@ import LoadingBars from "../loading/LoadingBars";
 
 const Director = async () => {
   const uniqueDirectors: Promise<Director[]> = getDirectorsOnly();
+  let directors = await uniqueDirectors;
+  let allDirectors: string[] = [];
 
-  const directors = await uniqueDirectors;
-  console.log("yo");
   console.log(directors);
+  directors.forEach((director) => {
+    const splitDirectors = director.director.split(", ");
+    allDirectors = allDirectors.concat(splitDirectors);
+  });
+
+  directors = Array.from(new Set(allDirectors.sort())).map((director) => ({
+    director,
+  }));
 
   return (
     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
