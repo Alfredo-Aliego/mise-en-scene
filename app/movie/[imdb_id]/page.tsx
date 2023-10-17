@@ -1,12 +1,9 @@
 import { getMovieById } from "@/api/lib/getMovieById";
-import FancyBox from "../../../hook/Fancy.jsx";
-import LoadingBars from "../../components/loading/LoadingBars";
+import FancyBox from "@/hook/Fancy";
 
 const MovieDetailPage = async ({ params }: MovieDetailParamsProps) => {
   const movieDetailData: movieDetailData = getMovieById(params.imdb_id);
   const movie = await movieDetailData;
-
-  if (!movie) return <LoadingBars />;
 
   let rating: number = (parseFloat(movie.imdb_rating) / 10) * 5;
 
@@ -15,7 +12,7 @@ const MovieDetailPage = async ({ params }: MovieDetailParamsProps) => {
   const totalStars = 10;
 
   return (
-    <div className="container mx-auto px-4 my-12">
+    <main className="container mx-auto px-4 my-12">
       <h1 className="text-4xl font-bold pt-4 mb-4">
         {movie.title} ({new Date(movie.date_released).getFullYear()})
       </h1>
@@ -24,26 +21,34 @@ const MovieDetailPage = async ({ params }: MovieDetailParamsProps) => {
         alt={movie.title}
         className=" w-full"
       />
-      <div className="flex items-center justify-between mt-2">
-        <p className="">
-          <span className="font-semibold">Director:</span> {movie.director}
-        </p>
-        <p className="">
-          <span className="font-semibold">Genre:</span> {movie.genre}
-        </p>
-        <p className="">
-          <span className="font-semibold">Rating:</span> {movie.rating}
-        </p>
-        <p className="">
+      <section className="flex items-center justify-between mt-2">
+        <article>
+          <h2>
+            <strong>Director:</strong> {movie.director}
+          </h2>
+        </article>
+        <article>
+          <h2>
+            <strong>Genre:</strong> {movie.genre}
+          </h2>
+        </article>
+        <article>
+          <h2>
+            <strong>Rated:</strong> {movie.rating}
+          </h2>
+        </article>
+        <article className="flex items-center">
           <a
             target="_blank"
             href={`https://www.imdb.com/title/${movie.imdb_id}`}
           >
-            <span className="font-semibold hover:underline">IMDb Rating:</span>
+            <h2 className="font-semibold hover:underline">
+              IMDb Rating:&nbsp;
+            </h2>
           </a>
 
           <span
-            className="rating rating-lg rating-half lg:tooltip"
+            className="rating rating-lg rating-half lg:tooltip pointer-events-none"
             data-tip={rating}
           >
             {Array.from({ length: totalStars }).map((_, index) => {
@@ -60,8 +65,9 @@ const MovieDetailPage = async ({ params }: MovieDetailParamsProps) => {
               );
             })}
           </span>
-        </p>
-      </div>
+        </article>
+      </section>
+
       <FancyBox
         options={{
           Carousel: {
@@ -89,7 +95,7 @@ const MovieDetailPage = async ({ params }: MovieDetailParamsProps) => {
           ))}
         </div>
       </FancyBox>
-    </div>
+    </main>
   );
 };
 
