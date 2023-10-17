@@ -7,7 +7,6 @@ const Country = async () => {
   let uniqueCountries = await countries;
   let allCountries: string[] = [];
 
-  console.log(uniqueCountries);
   uniqueCountries.forEach((country) => {
     const splitCountries = country.country.split(", ");
     allCountries = allCountries.concat(splitCountries);
