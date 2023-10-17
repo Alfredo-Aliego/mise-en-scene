@@ -1,8 +1,7 @@
-"use client";
 import { queryGenres } from "@/api/lib/queryGenres";
 import Link from "next/link";
 import LoadingBars from "@/app/components/loading/LoadingBars";
-import Masonry from "react-masonry-css";
+import Masonry from "@/utils/Masonry";
 
 const GenreResultsPage = async ({ params }: GenreParamsProps) => {
   const movieData: movieData = queryGenres(params.genre);

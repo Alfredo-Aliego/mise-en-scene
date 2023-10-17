@@ -1,8 +1,7 @@
-"use client";
 import { queryDirectors } from "@/api/lib/queryDirectors";
 import Link from "next/link";
 import LoadingBars from "@/app/components/loading/LoadingBars";
-import Masonry from "react-masonry-css";
+import Masonry from "@/utils/Masonry";
 
 const DirectorResultsPage = async ({ params }: DirectorParamsProps) => {
   const movieData: movieData = queryDirectors(params.director);

@@ -1,8 +1,7 @@
-"use client";
 import { queryCountries } from "@/api/lib/queryCountries";
 import Link from "next/link";
 import LoadingBars from "@/app/components/loading/LoadingBars";
-import Masonry from "react-masonry-css";
+import Masonry from "@/utils/Masonry";
 
 const CountryResultsPage = async ({ params }: CountryParamsProps) => {
   const movieData: movieData = queryCountries(params.country);
