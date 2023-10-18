@@ -8,7 +8,7 @@ import {
 import { useState, Fragment, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Masonry from "react-masonry-css";
+import Masonry from "@/utils/Masonry";
 import LoadingBars from "../components/loading/LoadingBars";
 
 type Movies = {

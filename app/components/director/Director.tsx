@@ -3,28 +3,29 @@ import { getDirectorsOnly } from "@/api/lib/getDirectorsOnly";
 import LoadingBars from "../loading/LoadingBars";
 
 const Director = async () => {
-  const uniqueDirectors: Promise<Director[]> = getDirectorsOnly();
-  let directors = await uniqueDirectors;
+  const directors: Promise<Director[]> = getDirectorsOnly();
+  let uniqueDirectors = await directors;
   let allDirectors: string[] = [];
 
-  console.log(directors);
-  directors.forEach((director) => {
+  uniqueDirectors.forEach((director) => {
     const splitDirectors = director.director.split(", ");
     allDirectors = allDirectors.concat(splitDirectors);
   });
 
-  directors = Array.from(new Set(allDirectors.sort())).map((director) => ({
-    director,
-  }));
+  uniqueDirectors = Array.from(new Set(allDirectors.sort())).map(
+    (director) => ({ director })
+  );
 
   return (
     <main className="flex justify-center flex-wrap gap-8 m-4 pt-8">
-      {directors.length > 0 ? (
-        directors.map((director, index) => (
-          <Link key={index} href={`/director/${director.director}`}>
-            <article className="w-[26vw] h-[13vw] flex justify-center items-center text-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current">
-              {`[ ${director.director} ]`}
-            </article>
+      {uniqueDirectors.length > 0 ? (
+        uniqueDirectors.map((director, index) => (
+          <Link
+            key={index}
+            href={`/director/${director.director}`}
+            className="w-[26vw] h-[13vw] flex justify-center items-center text-center bg-secondary cursor-pointer hover:opacity-50 text-4xl border border-current shadow-lg shadow-current"
+          >
+            {`[ ${director.director} ]`}
           </Link>
         ))
       ) : (

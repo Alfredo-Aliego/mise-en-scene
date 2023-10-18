@@ -28,17 +28,21 @@ type Director = {
 
 type UniqueDirector = string[];
 
-type Country = {
-  country: string;
-};
-
-type UniqueCountry = string[];
-
 type Genre = {
   genre: string;
 };
 
 type UniqueGenre = string[];
+
+type Year = {
+  year: string;
+};
+
+type Country = {
+  country: string;
+};
+
+type UniqueCountry = string[];
 
 type Title = {
   title: any;
@@ -63,27 +67,9 @@ type BackgroundProps = {
   canClick: boolean;
 };
 
-type Genre = {
-  genre: string;
-};
-
-type UniqueGenre = string[];
-
-type Year = {
-  year: string;
-};
-
-type UniqueYear = number[];
-
-type YearParamsProps = {
+type MovieDetailParamsProps = {
   params: {
-    year: string;
-  };
-};
-
-type GenreParamsProps = {
-  params: {
-    genre: string;
+    imdb_id: string;
   };
 };
 
@@ -93,8 +79,26 @@ type DirectorParamsProps = {
   };
 };
 
+type GenreParamsProps = {
+  params: {
+    genre: string;
+  };
+};
+
+type YearParamsProps = {
+  params: {
+    year: string;
+  };
+};
+
 type CountryParamsProps = {
   params: {
     country: string;
   };
 };
+
+type query = string;
+
+type movieData = Promise<Movie[]>;
+
+type movieDetailData = Promise<Movie>;
